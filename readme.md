@@ -40,7 +40,8 @@ cd containerbank
 
 ## Configuration de la base de données
 
-Vous avez le choix entre deux méthodes pour le stockage et l'accès aux données (attention: l'une sera plus valorisée que l'autre, a vous de choisir !) : 
+Le stockage et l'accès aux données de l'application a été configurée avec deux profiles par defaut : 
+- **HSQL (par defaut)** : l'application tournera toute seule, sans aucune configuration de votre part
 - **MySQL (par defaut)** : par défaut, les identifiants pour accéder à la base de données sont definis dans le fichier `pom.xml` :
 
   ```
@@ -58,9 +59,8 @@ Vous avez le choix entre deux méthodes pour le stockage et l'accès aux donnée
   ```   
   mysql -uroot -p < src/main/ressources/db/mysql/initDB.sql # création de la base de données 
   mysql -uroot -p < src/main/ressources/db/mysql/populateDB.sql # initialisation de la base de données
-  ``` 
-  
-- **HSQL (par defaut)** : l'application tournera toute seule, sans aucune configuration de votre part ...
+  ```
+**Attention : faites comme bon vous semble, aucune des deux méthodes ci-dessus ne sont imposées**
 
 ## Packager, lancer et accéder à l'application
 

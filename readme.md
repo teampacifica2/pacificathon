@@ -40,9 +40,9 @@ cd containerbank
 
 ## Configuration de la base de données
 
-Le stockage et l'accès aux données de l'application a été configurée avec deux profiles par defaut : 
+Le stockage et l'accès aux données de l'application a été préconfigurée avec deux profiles : 
 - **HSQL (par defaut)** : l'application tournera toute seule, sans aucune configuration de votre part
-- **MySQL (par defaut)** : par défaut, les identifiants pour accéder à la base de données sont definis dans le fichier `pom.xml` :
+- **MySQL** : par défaut, les identifiants pour accéder à la base de données sont definis dans le fichier `pom.xml` :
 
   ```
   <properties>

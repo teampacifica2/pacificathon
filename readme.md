@@ -79,8 +79,10 @@ Attention : si vous ne specifiez aucun profile (`-P`), l'application s'executera
 
 ## Environnement CaaS Amazon
 
-Un namespace AWS a été attribué à chaque équipe qui dispose donc d'un accès à un environnement AWS EKS complet. Pour pouvoir intéragir avec l'EKS, il vous faut copier la configuration de votre équipe dans le dossier `.kube` :<br/>
-`cp packapp-configs/packapp-configs/packapp[TEAM]-kubeconfig ~/.kube/config`
+Un namespace AWS a été attribué à chaque équipe qui dispose donc d'un accès à un environnement AWS EKS complet. Pour pouvoir intéragir avec l'EKS, il vous faut copier la configuration de votre équipe dans le dossier `.kube` :
+```
+cp packapp-configs/packapp-configs/packapp[TEAM]-kubeconfig ~/.kube/config
+```
 
 # L'application
 

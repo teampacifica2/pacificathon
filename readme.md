@@ -40,35 +40,52 @@ cd containerbank
 
 **Configuration de la base de données**
 
-Par défaut, les identifiants pour accéder à la base de données sont definis dans le fichier `pom.xml`.
+Vous avez le choix entre deux méthodes pour le stockage et l'accès aux données (attention: l'une sera plus valorisée que l'autre, a vous de choisir !) : 
+- **MySQL (par defaut)** : par défaut, les identifiants pour accéder à la base de données sont definis dans le fichier `pom.xml` :
 
+  ```
+  <properties>
+      <jpa.database>MYSQL</jpa.database>
+      <jdbc.driverClassName>com.mysql.cj.jdbc.Driver</jdbc.driverClassName>
+      <jdbc.url>jdbc:mysql://localhost:3306/containerbank?useUnicode=true</jdbc.url>
+      <jdbc.username>root</jdbc.username>
+      <jdbc.password>root</jdbc.password>
+  </properties>
+  ```      
+  
+  Avant de démarrer, il est nécessaire de créer une base de données et de l'intialiser.
+  
+  ```   
+  mysql -uroot -p < src/main/ressources/db/mysql/initDB.sql # création de la base de données 
+  mysql -uroot -p < src/main/ressources/db/mysql/populateDB.sql # initialisation de la base de données
+  ``` 
+  
+- **HSQL (par defaut)** : l'application tournera toute seule, sans aucune configuration de votre part ...
+
+**Packager, lancer et accéder à l'application**
+
+Avant tout chose, vous devez packager l'application en un fichier `.war`:
 ```
-<properties>
-    <jpa.database>MYSQL</jpa.database>
-    <jdbc.driverClassName>com.mysql.cj.jdbc.Driver</jdbc.driverClassName>
-    <jdbc.url>jdbc:mysql://localhost:3306/containerbank?useUnicode=true</jdbc.url>
-    <jdbc.username>root</jdbc.username>
-    <jdbc.password>root</jdbc.password>
-</properties>
-```      
-
-Avant de démarrer, il est nécessaire de créer une base de données et de l'intialiser.
-
-```   
-mysql -uroot -p < src/main/ressources/db/mysql/initDB.sql # création de la base de données 
-mysql -uroot -p < src/main/ressources/db/mysql/populateDB.sql # initialisation de la base de données
-```   
-
-**Lancer l'application**
+mvn clean package
 ```
-./mvnw tomcat7:run-war -P MySQL
+Une fois le dossier `/target` créé, vous pouvez lancer l'application via la commande :
 ```
+./mvnw tomcat7:run-war [-P=<nom du profile>]
+```
+Attention : si vous ne specifiez aucun profile (`-P`), l'application s'executera avec le profile `HSQL`
+
 Vous pouvez accéder à l'application containerbank ici: http://localhost:9966/containerbank/
 
 **Environnement CaaS Amazon** 
 
-Chaque équipe dipose de son environnement AWS EKS dédié. 
-A compléter avec information de connexion, d'utilisation, etc.
+Un namespace AWS a été attribué à chaque équipe qui dispose donc d'un accès à un environnement AWS EKS complet. 
+
+Pour vous connecter : 
+1. Demandez l'IP de votre machine au coach le plus proche
+2. Telechargez le fichier `.pem` qui vous a été transféré par mail, puis, executez la commande suivante **dans le dossier ou se trouve le fichier `.pem`**:
+  ```
+  ssh -i "hackathon-ec2-tp.pem" ec2-user@[IP DE VOTRE MACHINE]
+  ```
 
 # L'application
 
@@ -76,19 +93,19 @@ A compléter avec information de connexion, d'utilisation, etc.
 
 L'application containerbank dispose d'une architecture 3-tiers classique (Presentation -> Service -> Repository).
 
-<img src="https://raw.githubusercontent.com/hackathonpackapp/packapp/master/readme_architecture-overview.png"
+<img src="https://raw.githubusercontent.com/hackathonpackapp/containerbank/master/readme_architecture-overview.png"
      alt="Architecture overview"
      width="70%" />
 
 ### Diagramme de classe 
 
-<img src="https://raw.githubusercontent.com/hackathonpackapp/packapp/master/readme_class-diagram.png"
+<img src="https://raw.githubusercontent.com/hackathonpackapp/containerbank/master/readme_class-diagram.png"
      alt="Diagramme de classe"
      width="70%" />
 
 ### Diagramme fonctionnel 
 
-<img src="https://raw.githubusercontent.com/hackathonpackapp/packapp/master/readme_functional-diagram.png"
+<img src="https://raw.githubusercontent.com/hackathonpackapp/containerbank/master/readme_functional-diagram.png"
      alt="Diagramme fonctionnel"
      width="70%" />
 

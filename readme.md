@@ -79,14 +79,8 @@ Attention : si vous ne specifiez aucun profile (`-P`), l'application s'executera
 
 ## Environnement CaaS Amazon
 
-Un namespace AWS a été attribué à chaque équipe qui dispose donc d'un accès à un environnement AWS EKS complet. 
-
-Pour vous connecter : 
-1. Demandez l'IP de votre machine au coach le plus proche
-2. Telechargez le fichier `.pem` qui vous a été transféré par mail, puis, executez la commande suivante **dans le dossier ou se trouve le fichier** `.pem`:
-  ```
-  ssh -i "hackathon-ec2-tp.pem" ec2-user@[IP DE VOTRE MACHINE]
-  ```
+Un namespace AWS a été attribué à chaque équipe qui dispose donc d'un accès à un environnement AWS EKS complet. Pour pouvoir intéragir avec l'EKS, il vous faut copier la configuration de votre équipe dans le dossier `.kube` :
+`cp packapp-configs/packapp-configs/packapp[TEAM]-kubeconfig ~/.kube/config`
 
 # L'application
 

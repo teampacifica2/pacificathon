@@ -83,7 +83,7 @@ Un namespace AWS a été attribué à chaque équipe qui dispose donc d'un accè
 
 Pour vous connecter : 
 1. Demandez l'IP de votre machine au coach le plus proche
-2. Telechargez le fichier `.pem` qui vous a été transféré par mail, puis, executez la commande suivante **dans le dossier ou se trouve le fichier `.pem`**:
+2. Telechargez le fichier `.pem` qui vous a été transféré par mail, puis, executez la commande suivante **dans le dossier ou se trouve le fichier** `.pem`:
   ```
   ssh -i "hackathon-ec2-tp.pem" ec2-user@[IP DE VOTRE MACHINE]
   ```

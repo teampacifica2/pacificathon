@@ -38,7 +38,7 @@ git clone https://github.com/wavestone/hackathonpackapp/containerbank.git
 cd containerbank
 ```
 
-**Configuration de la base de données**
+## Configuration de la base de données
 
 Vous avez le choix entre deux méthodes pour le stockage et l'accès aux données (attention: l'une sera plus valorisée que l'autre, a vous de choisir !) : 
 - **MySQL (par defaut)** : par défaut, les identifiants pour accéder à la base de données sont definis dans le fichier `pom.xml` :
@@ -62,21 +62,22 @@ Vous avez le choix entre deux méthodes pour le stockage et l'accès aux donnée
   
 - **HSQL (par defaut)** : l'application tournera toute seule, sans aucune configuration de votre part ...
 
-**Packager, lancer et accéder à l'application**
+## Packager, lancer et accéder à l'application
 
-Avant tout chose, vous devez packager l'application en un fichier `.war`:
+**Packager l'application en un fichier `.war`**
 ```
 mvn clean package
 ```
-Une fois le dossier `/target` créé, vous pouvez lancer l'application via la commande :
+**Lancer l'application via la commande**
 ```
 ./mvnw tomcat7:run-war [-P=<nom du profile>]
 ```
 Attention : si vous ne specifiez aucun profile (`-P`), l'application s'executera avec le profile `HSQL`
 
-Vous pouvez accéder à l'application containerbank ici: http://localhost:9966/containerbank/
+**Accéder à l'application** 
+`http://localhost:9966/containerbank/`
 
-**Environnement CaaS Amazon** 
+## Environnement CaaS Amazon
 
 Un namespace AWS a été attribué à chaque équipe qui dispose donc d'un accès à un environnement AWS EKS complet. 
 

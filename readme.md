@@ -33,6 +33,12 @@ Toutes les applications seront testées par les membres du jury. A niveau de fon
 
 # Get started
 
+## Obligatoire : indiquer son nom sur son ordinateur
+
+Avant tout chose, vous devez indiquer votre nom sur le ruban blanc collé sur votre ordinateur. Cela vous permettra de retrouver votre poste le matin en arrivant.
+
+## Accès au code source
+
 ```
 git clone https://github.com/wavestone/hackathonpackapp/containerbank.git
 cd containerbank
@@ -79,9 +85,9 @@ Attention : si vous ne specifiez aucun profile (`-P`), l'application s'executera
 
 ## Environnement CaaS Amazon
 
-Un namespace AWS a été attribué à chaque équipe qui dispose donc d'un accès à un environnement AWS EKS complet. Pour pouvoir intéragir avec l'EKS, il vous faut copier la configuration de votre équipe dans le dossier `.kube` :
+Un namespace AWS a été attribué à chaque équipe qui dispose donc d'un accès à un environnement AWS EKS complet. Pour pouvoir intéragir avec l'EKS, vous devez copier la configuration de votre équipe (qui a été envoyée au premier nom affiché sur la table) dans le dossier `.kube` :
 ```
-cp packapp-configs/packapp-configs/packapp[TEAM]-kubeconfig ~/.kube/config
+cp packapp[TEAM]-kubeconfig ~/.kube/config
 ```
 ## Versionning
 

@@ -152,3 +152,4 @@ Contactez les coachs :
 - Soufiance AL HYAR (Wavestone)
 - Emmanuel FORTIN (CA/SILCA)
 - Maxime DECALF (CA/SILCA)
+- Marc HELLOCO (CA/CASA-AEG)

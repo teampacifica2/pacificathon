@@ -127,6 +127,7 @@ Disponible ici : https://raw.githubusercontent.com/hackathonpackapp/containerban
 | Nom | Lien |
 |------|------|
 | Guide de bonnes pratiques | [Lien vers la présentation](https://s3-eu-west-1.amazonaws.com/presentations-pdf/AEG+Conteneurs+Applicatifs+Docker+Guide+Architecture.pdf) |
+| Guide d'architecture Cloud-Ready | [Lien vers la présentation](https://s3-eu-west-1.amazonaws.com/presentations-pdf/AEG+-+Cloud+Ready+-+Guide+d'architecture.pdf) |
 | Présentation de l'évènement |[Lien vers la présentation](https://s3-eu-west-1.amazonaws.com/presentations-pdf/CA+SA+-+Hackathon+Container+-+Pr%C3%A9sentation+de+l'%C3%A9v%C3%A8nement.pdf) |
 | Introduction aux Conteneurs |[Lien vers la présentation](https://s3-eu-west-1.amazonaws.com/presentations-pdf/CA+SA+-+Hackathon+Container+-+Introduction+Container.pdf) |
 | Support Atelier et TP#1 |[Lien vers la présentation](https://s3-eu-west-1.amazonaws.com/presentations-pdf/CA+SA+-+Hackathon+Container+-+Atelier+et+TP+%231.pdf) |
@@ -144,7 +145,7 @@ Disponible ici : https://raw.githubusercontent.com/hackathonpackapp/containerban
 | `AEG-Docker-00` | Privilégier les applications et services conteneurs-ready​​ |
 | `AEG-Docker-00` | Privilégier les middlewares conteneurs-ready​​​ |
 | `AEG-Docker-00` | Les bases de données doivent être conteneurs-ready pour être déployées en production |
-| `AEG-Docker-00` | Les applications et services conteneurisés doivent être sans états (comme défini dans le [guide d’architecture Cloud Ready](https://s3-eu-west-1.amazonaws.com/presentations-pdf/AEG+Conteneurs+Applicatifs+Docker+Guide+Architecture.pdf)) |​
+| `AEG-Docker-00` | Les applications et services conteneurisés doivent être sans états (comme défini dans le [guide d’architecture Cloud Ready](https://s3-eu-west-1.amazonaws.com/presentations-pdf/AEG+-+Cloud+Ready+-+Guide+d'architecture.pdf)) |​
 | `AEG-Docker-00` | En production, le principe d’immutabilité des conteneurs doit être respecté |​
 | `AEG-Docker-00` | Un conteneur doit être léger (consomme peu de ressources) |​
 | `AEG-Docker-00` | Au moment de l’instanciation d’un conteneur, aucun appel à des gestionnaires de sources externes n’est autorisé |​

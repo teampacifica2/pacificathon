@@ -116,11 +116,14 @@ Disponible ici : https://raw.githubusercontent.com/hackathonpackapp/containerban
 ## Liens vers les présentations
 
 | Nom | Lien |
-|------|-------|
-| Présentation 1 | [Lien vers la présentation 1](http://google.com) |
-| Présentation 2 | [Lien vers la présentation 2](http://google.com) |
-| Présentation 3 | [Lien vers la présentation 3](http://google.com) |
-| Présentation 4 | [Lien vers la présentation 4](http://google.com) |​
+|------|------|
+| Guide de bonnes pratiques | [Lien]https://s3-eu-west-1.amazonaws.com/presentations-pdf/AEG+Conteneurs+Applicatifs+Docker+Guide+Architecture.pdf) |
+| Présentation de l'évènement |[Lien](https://s3-eu-west-1.amazonaws.com/presentations-pdf/CA+SA+-+Hackathon+Container+-+Pr%C3%A9sentation+de+l'%C3%A9v%C3%A8nement.pdf) |
+| Introduction aux Conteneurs |[Lien](https://s3-eu-west-1.amazonaws.com/presentations-pdf/CA+SA+-+Hackathon+Container+-+Introduction+Container.pdf) |
+| Support Atelier et TP#1 |[Lien](https://s3-eu-west-1.amazonaws.com/presentations-pdf/CA+SA+-+Hackathon+Container+-+Atelier+et+TP+%231.pdf) |
+| Support Atelier et TP#2 |[Lien](https://s3-eu-west-1.amazonaws.com/presentations-pdf/CA+SA+-+Hackathon+Container+-+Atelier+et+TP+%232.pdf) |
+| Support Atelier et TP#3 |[Lien](https://s3-eu-west-1.amazonaws.com/presentations-pdf/CA+SA+-+Hackathon+Container+-+Atelier+et+TP+%233.pdf) |
+| Support Atelier et TP#4 |[Lien](https://s3-eu-west-1.amazonaws.com/presentations-pdf/CA+SA+-+Hackathon+Container+-+Atelier+et+TP+%234.pdf) |
 
 ## Bonnes pratiques
 

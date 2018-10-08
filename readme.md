@@ -108,7 +108,7 @@ L'application containerbank dispose d'une architecture 3-tiers classique (Presen
 
 ## Modèle de données
 
-Disponible ici : https://github.com/hackathonpackapp/packapp/blob/master/src/main/resources/db/mysql/initDB.sql 
+Disponible ici : https://raw.githubusercontent.com/hackathonpackapp/containerbank/master/src/main/resources/db/mysql/initDB.sql 
 
 
 # Annexes 

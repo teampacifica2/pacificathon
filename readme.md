@@ -159,6 +159,7 @@ Contactez les coachs :
 - Geoffray MENUDIER (Wavestone)
 - Ferréol GODEBARGE (Wavestone)
 - Soufiance AL HYAR (Wavestone)
+- Nicolas HUSSER (Wavestone)
 - Emmanuel FORTIN (CA/SILCA)
 - Maxime DECALF (CA/SILCA)
 - Marc HELLOCO (CA/CASA-AEG)

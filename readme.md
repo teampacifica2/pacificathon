@@ -83,6 +83,9 @@ Un namespace AWS a été attribué à chaque équipe qui dispose donc d'un accè
 ```
 cp packapp-configs/packapp-configs/packapp[TEAM]-kubeconfig ~/.kube/config
 ```
+## Versionning
+
+Aucun outil de versionning n'a été reservé pour les équipes : **libre à vous d'utiliser l'outil de votre choix** (Github, Gitlab, CodeCommit, etc.), à condition de nous donner les accès pour l'évaluation !
 
 # L'application
 

@@ -1,22 +1,19 @@
 
 package org.hackathon.packapp.containerbank.web;
 
-import java.util.Map;
-
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.hackathon.packapp.containerbank.model.Card;
 import org.hackathon.packapp.containerbank.model.Payment;
 import org.hackathon.packapp.containerbank.service.BankService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Wavestone
@@ -55,27 +52,16 @@ public class PaymentController {
         return payment;
     }
 
-    // Spring MVC calls method loadCardWithPayment(...) before initNewPaymentForm is called
-    @RequestMapping(value = "/customers/*/cards/{cardId}/payments/new", method = RequestMethod.GET)
-    public String initNewPaymentForm(@PathVariable("cardId") int cardId, Map<String, Object> model) {
-        return "cards/createOrUpdatePaymentForm";
-    }
-
     // Spring MVC calls method loadCardWithPayment(...) before processNewPaymentForm is called
     @RequestMapping(value = "/customers/{customerId}/cards/{cardId}/payments/new", method = RequestMethod.POST)
-    public String processNewPaymentForm(@Valid Payment payment, BindingResult result) {
-        if (result.hasErrors()) {
-            return "cards/createOrUpdatePaymentForm";
-        } else {
-            this.bankService.savePayment(payment);
-            return "redirect:/customers/{customerId}";
-        }
+    public ResponseEntity processNewPaymentForm(@Valid Payment payment) {
+        this.bankService.savePayment(payment);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/customers/*/cards/{cardId}/payments", method = RequestMethod.GET)
-    public String showPayments(@PathVariable int cardId, Map<String, Object> model) {
-        model.put("payments", this.bankService.findCardById(cardId).getPayments());
-        return "paymentList";
+    public ResponseEntity<List<Payment>> showPayments(@PathVariable int cardId, Map<String, Object> model) {
+        return new ResponseEntity<>(this.bankService.findCardById(cardId).getPayments(), HttpStatus.OK);
     }
 
 }

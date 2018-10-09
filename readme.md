@@ -76,7 +76,7 @@ mvn clean package
 ```
 **Lancer l'application via la commande**
 ```
-./mvnw tomcat7:run-war [-P=<nom du profile>]
+mvn tomcat7:run-war [-P=<nom du profile>]
 ```
 Attention : si vous ne specifiez aucun profile (`-P`), l'application s'executera avec le profile `HSQL`
 

@@ -17,7 +17,7 @@ L’objectif principal est de conteneuriser et API-ser l’application container
 - [ ] `ViewPayment` : voir des informations relatives à l'historique de paiement d’une carte bleue<br/>
 - [ ] `AddPayment` : ajouter des informations relatives à un paiement (nature du paiement)<br/>
 - [ ] `Monitoring` : monitorer chaque appels et leur durée<br/>
-- [ ] `Logging` : ajouter des informations relatives à un paiement (nature du paiement)
+- [ ] `Logging` : centraliser les logs de l'application
 
 ## Livrables
 

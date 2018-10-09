@@ -13,12 +13,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author Wavestone
  */
-@XmlRootElement
+
 public class Advisors {
 
     private List<Advisor> advisors;
 
-    @XmlElement
     public List<Advisor> getAdvisorList() {
         if (advisors == null) {
             advisors = new ArrayList<>();

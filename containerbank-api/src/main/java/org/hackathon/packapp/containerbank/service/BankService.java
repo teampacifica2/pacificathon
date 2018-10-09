@@ -2,6 +2,7 @@
 package org.hackathon.packapp.containerbank.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 import org.hackathon.packapp.containerbank.model.Customer;
@@ -32,8 +33,10 @@ public interface BankService {
 
     void saveCustomer(Customer customer) throws DataAccessException;
 
-    Collection<Customer> findCustomerByLastName(String lastName) throws DataAccessException;
+    List<Customer> findCustomerByLastName(String lastName) throws DataAccessException;
 
-	Collection<Payment> findPaymentsByCardId(int cardId);
+    Collection<Payment> findPaymentsByCardId(int cardId);
+    Iterable<Customer> findAllCustomers();
 
+    void saveAdvisor(Advisor advisor);
 }

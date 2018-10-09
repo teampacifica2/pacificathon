@@ -1,12 +1,14 @@
 
 package org.hackathon.packapp.containerbank.repository;
 
-import java.util.List;
-
-import org.springframework.dao.DataAccessException;
 import org.hackathon.packapp.containerbank.model.BaseEntity;
 import org.hackathon.packapp.containerbank.model.Card;
 import org.hackathon.packapp.containerbank.model.CardType;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
 
 /**
  * Repository class for <code>Card</code> domain objects All method names are compliant with Spring Data naming
@@ -14,13 +16,14 @@ import org.hackathon.packapp.containerbank.model.CardType;
  *
  * @author Wavestone
  */
-public interface CardRepository {
+public interface CardRepository extends CrudRepository<CardType, Long> {
 
     /**
-     * Retrieve all <code>CardType</code>s from the data store.
+     * Retrieve all <code>odType</code>s from the data store.
      *
      * @return a <code>Collection</code> of <code>CardType</code>s
      */
+    @Query("SELECT ptype FROM CardType ptype ORDER BY ptype.name")
     List<CardType> findCardTypes() throws DataAccessException;
 
     /**

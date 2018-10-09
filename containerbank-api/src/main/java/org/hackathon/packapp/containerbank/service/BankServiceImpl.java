@@ -2,7 +2,9 @@
 package org.hackathon.packapp.containerbank.service;
 
 import java.util.Collection;
+import java.util.List;
 
+import org.hackathon.packapp.containerbank.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
@@ -12,7 +14,6 @@ import org.hackathon.packapp.containerbank.model.CardType;
 import org.hackathon.packapp.containerbank.model.Advisor;
 import org.hackathon.packapp.containerbank.model.Payment;
 import org.hackathon.packapp.containerbank.repository.CustomerRepository;
-import org.hackathon.packapp.containerbank.repository.CardRepository;
 import org.hackathon.packapp.containerbank.repository.AdvisorRepository;
 import org.hackathon.packapp.containerbank.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
@@ -54,8 +55,14 @@ public class BankServiceImpl implements BankService {
 
     @Override
     @Transactional(readOnly = true)
-    public Collection<Customer> findCustomerByLastName(String lastName) throws DataAccessException {
+    public List<Customer> findCustomerByLastName(String lastName) throws DataAccessException {
         return customerRepository.findByLastName(lastName);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Iterable<Customer> findAllCustomers() throws DataAccessException {
+        return customerRepository.findAll();
     }
 
     @Override
@@ -69,6 +76,12 @@ public class BankServiceImpl implements BankService {
     @Transactional
     public void savePayment(Payment payment) throws DataAccessException {
         paymentRepository.save(payment);
+    }
+
+    @Override
+    @Transactional
+    public void saveAdvisor(Advisor advisor) throws DataAccessException {
+        advisorRepository.save(advisor);
     }
 
 

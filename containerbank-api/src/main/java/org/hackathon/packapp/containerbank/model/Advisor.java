@@ -25,7 +25,7 @@ import org.springframework.beans.support.PropertyComparator;
  */
 @Entity
 @Table(name = "advisors")
-public class Advisor extends Person {
+public class Advisor extends Person{
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "advisor_specialties", joinColumns = @JoinColumn(name = "advisor_id"),
@@ -43,7 +43,6 @@ public class Advisor extends Person {
         this.specialties = specialties;
     }
 
-    @XmlElement
     public List<Specialty> getSpecialties() {
         List<Specialty> sortedSpecs = new ArrayList<>(getSpecialtiesInternal());
         PropertyComparator.sort(sortedSpecs, new MutableSortDefinition("name", true, true));

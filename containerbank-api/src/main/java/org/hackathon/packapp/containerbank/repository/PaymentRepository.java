@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 import org.hackathon.packapp.containerbank.model.BaseEntity;
 import org.hackathon.packapp.containerbank.model.Payment;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  * Repository class for <code>Payment</code> domain objects All method names are compliant with Spring Data naming
@@ -13,7 +14,7 @@ import org.hackathon.packapp.containerbank.model.Payment;
  *
  * @author Wavestone
  */
-public interface PaymentRepository {
+public interface PaymentRepository extends CrudRepository<Payment,Long> {
 
     /**
      * Save a <code>Payment</code> to the data store, either inserting or updating it.
@@ -21,7 +22,7 @@ public interface PaymentRepository {
      * @param payment the <code>Payment</code> to save
      * @see BaseEntity#isNew
      */
-    void save(Payment payment) throws DataAccessException;
+//    void save(Payment payment) throws DataAccessException;
 
     List<Payment> findByCardId(Integer cardId);
 

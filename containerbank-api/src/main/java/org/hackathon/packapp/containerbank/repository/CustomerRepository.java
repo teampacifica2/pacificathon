@@ -2,10 +2,12 @@
 package org.hackathon.packapp.containerbank.repository;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 import org.hackathon.packapp.containerbank.model.BaseEntity;
 import org.hackathon.packapp.containerbank.model.Customer;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  * Repository class for <code>Customer</code> domain objects All method names are compliant with Spring Data naming
@@ -13,7 +15,7 @@ import org.hackathon.packapp.containerbank.model.Customer;
  *
  * @author Wavestone
  */
-public interface CustomerRepository {
+public interface CustomerRepository extends CrudRepository<Customer,Long> {
 
     /**
      * Retrieve <code>Customer</code>s from the data store by last name, returning all customers whose last name <i>starts</i>
@@ -23,7 +25,7 @@ public interface CustomerRepository {
      * @return a <code>Collection</code> of matching <code>Customer</code>s (or an empty <code>Collection</code> if none
      * found)
      */
-    Collection<Customer> findByLastName(String lastName) throws DataAccessException;
+    List<Customer> findByLastName(String lastName) throws DataAccessException;
 
     /**
      * Retrieve an <code>Customer</code> from the data store by id.
@@ -41,7 +43,7 @@ public interface CustomerRepository {
      * @param customer the <code>Customer</code> to save
      * @see BaseEntity#isNew
      */
-    void save(Customer customer) throws DataAccessException;
+    //void save(Customer customer) throws DataAccessException;
 
 
 }

@@ -18,7 +18,8 @@ const appRoutes: Routes = [
   {path: 'customer/:id', component: CustomerComponent},
   {path: 'find-customer', component: FindCustomerComponent},
   {path: 'edit-customer', component: EditCustomerComponent},
-  {path: '**', component: ErrorComponent}
+  {path: '**', component: ErrorComponent},
+  {path: 'error', component: ErrorComponent}
 ];
 
 

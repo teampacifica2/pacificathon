@@ -13,7 +13,7 @@ import {Component} from '@angular/core';
 
 
             <li class="active">
-              <a href="/" title="home page">
+              <a routerLink="/" title="home page">
 
                 <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                 <span>Home</span>
@@ -23,7 +23,7 @@ import {Component} from '@angular/core';
 
 
             <li class="">
-              <a href="/find-customer" title="find customer">
+              <a routerLink="/find-customer" title="find customer">
 
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 <span>Find customer</span>
@@ -33,7 +33,7 @@ import {Component} from '@angular/core';
 
 
             <li class="">
-              <a href="/advisors" title="advisors">
+              <a routerLink="/advisors" title="advisors">
 
                 <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                 <span>Advisors</span>
@@ -43,7 +43,7 @@ import {Component} from '@angular/core';
 
 
             <li class="">
-              <a href="/containerbank/oups.html" title="trigger a RuntimeException to see how it is handled">
+              <a routerLink="/error" title="trigger a RuntimeException to see how it is handled">
 
                 <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
                 <span>Error</span>

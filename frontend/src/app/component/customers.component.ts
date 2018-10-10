@@ -24,7 +24,7 @@ import {Customer} from '../model/Customer';
           <tbody>
           <tr *ngFor="let customer of customers">
             <td>
-              <a href="/customerdetail?{{customer?.id}}">{{customer.lastName}}</a>
+              <a routerLink="/customer/{{customer?.id}}">{{customer.lastName}}</a>
             </td>
             <td>
               {{customer?.address}}

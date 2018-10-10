@@ -29,10 +29,10 @@ public class CustomerController {
 
 
     @PostMapping(value = "/customers/new")
-    public ResponseEntity processCreationForm(@Valid Customer customer) {
+    public ResponseEntity processCreationForm(@RequestBody Customer customer) {
         this.bankService.saveCustomer(customer);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Access-Control-Allow-Origin", "*");
+        // headers.add("Access-Control-Allow-Origin", "*");
         return new ResponseEntity(headers, HttpStatus.OK);
     }
 
@@ -46,14 +46,14 @@ public class CustomerController {
     @GetMapping(value = "/customers")
     public ResponseEntity<Iterable<Customer>> findAllCustomers() {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Access-Control-Allow-Origin", "*");
+        // headers.add("Access-Control-Allow-Origin", "*");
         return new ResponseEntity(this.bankService.findAllCustomers(), headers, HttpStatus.OK);
     }
 
     @GetMapping(value = "/customers/{customerId}")
     public ResponseEntity<Customer> getCustomer(@PathVariable("customerId") int customerId) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Access-Control-Allow-Origin", "*");
+        // headers.add("Access-Control-Allow-Origin", "*");
         return new ResponseEntity(this.bankService.findCustomerById(customerId), headers, HttpStatus.OK);
     }
 

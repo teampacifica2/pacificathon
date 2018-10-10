@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Component} from '@angular/core';
 
 @Component({
   selector: `customers`,
   template: `
     <div class="container-fluid">
       <div class="container xd-container">
+
         <h2>Customers</h2>
 
         <table id="customersTable" class="table table-striped">

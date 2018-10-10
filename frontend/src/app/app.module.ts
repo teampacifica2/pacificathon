@@ -11,13 +11,16 @@ import {NavbarComponent} from './component/navbar.component';
 import {ErrorComponent} from './component/error.component';
 import {HomeComponent} from './component/home.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {FormsModule} from "@angular/forms";
+import {NewCustomerComponent} from "./component/new-customer.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'customers', component: CustomersComponent},
   {path: 'customer/:id', component: CustomerComponent},
   {path: 'find-customer', component: FindCustomerComponent},
-  {path: 'edit-customer', component: EditCustomerComponent},
+  {path: 'edit-customer/:id', component: EditCustomerComponent},
+  {path: 'new-customer', component: NewCustomerComponent},
   {path: '**', component: ErrorComponent},
   {path: 'error', component: ErrorComponent}
 ];
@@ -32,12 +35,14 @@ const appRoutes: Routes = [
     EditCustomerComponent,
     NavbarComponent,
     ErrorComponent,
-    HomeComponent
+    HomeComponent,
+    NewCustomerComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

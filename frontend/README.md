@@ -37,7 +37,7 @@ sudo rm hackathon-js
 
 Création et lancement du nouveau container:
 ````
-sudo docker run -p80:80 --name=hackathon-js  teampacifica2/hackaton-js:0.0.1-SNAPSHOT
+sudo docker run -p80:80 --name=hackathon-js --network="host"  teampacifica2/hackaton-js:0.0.1-SNAPSHOT
 ````
 
 Tuto https://kubernetes.io/docs/tasks/access-application-cluster/connecting-frontend-backend/

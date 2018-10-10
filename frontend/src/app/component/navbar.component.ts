@@ -8,7 +8,7 @@ import {Component} from '@angular/core';
         <div class="navbar-header">
           <a class="navbar-brand" href="/containerbank/"><span></span></a>
         </div>
-        <div class="navbar-collapse collapse" id="main-navbar">
+        <div class="navbar-collapse" id="main-navbar">
           <ul class="nav navbar-nav navbar-right">
 
 

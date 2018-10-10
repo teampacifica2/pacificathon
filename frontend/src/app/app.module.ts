@@ -10,6 +10,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {NavbarComponent} from './component/navbar.component';
 import {ErrorComponent} from './component/error.component';
 import {HomeComponent} from './component/home.component';
+import {HttpModule} from "@angular/http";
+import {HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -36,10 +36,11 @@ import {Router} from '@angular/router';
 })
 export class FindCustomerComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   goToCustomers() {
-    this.router.navigateByUrl(`/customers`);
+    this.router.navigate(["/customers"]);
   }
 
 }

@@ -4,7 +4,7 @@
 ## Livrables
 
 - [ ] Le **code source** de l'application conteneurisée
-- [ ] Un fichier **readme.md** contenant : un schéma d'architecture de vos conteneurs, les évolutions souhaitées mais non réalisées, et tout ce qui vous passe par la tête :smirk:
+- [ ] Le **readme.md**
 - [ ] La liste des use case couverts
 
 	- [ ] `ViewAdvisors` : voir une liste de conseillers et leurs spécialités (none, savings, credits ou insurance)<br/>

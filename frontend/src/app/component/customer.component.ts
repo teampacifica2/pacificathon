@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Customer} from "../model/Customer";
 
 @Component({
   selector: `customer`,
   template: `
-    <div class="container-fluid">
+    <div class="container-fluid" *ngIf="!isLoading">
       <div class="container xd-container">
 
         <h2>Customer Information</h2>
@@ -16,26 +16,26 @@ import {Customer} from "../model/Customer";
           <tbody>
           <tr>
             <th>Name</th>
-            <td><b>Jean-Pierre Deshaies</b></td>
+            <td><b>{{client.firstName}} {{client.lastName}}</b></td>
           </tr>
           <tr>
             <th>Address</th>
-            <td>5 Boulevard Diderot</td>
+            <td>{{client.address}}</td>
           </tr>
           <tr>
             <th>City</th>
-            <td>Paris</td>
+            <td>{{client.city}}</td>
           </tr>
           <tr>
             <th>Telephone</th>
-            <td>0639283726</td>
+            <td>{{client.telephone}}</td>
           </tr>
           </tbody>
         </table>
 
-        <a href="1/edit.html" class="btn btn-default">Edit Customer</a>
+        <a (click)="editCustomer()" class="btn btn-default">Edit Customer</a>
 
-        <a href="1/cards/new.html" class="btn btn-default">Add New Card</a>
+        <a (click)="addNewCard()" class="btn btn-default">Add New Card</a>
 
         <br>
         <br>
@@ -44,15 +44,15 @@ import {Customer} from "../model/Customer";
 
         <table class="table table-striped">
           <tbody>
-          <tr>
+          <tr *ngFor="let card of client.cards">
             <td valign="top">
               <dl class="dl-horizontal">
                 <dt>Name</dt>
-                <dd>Professionnelle</dd>
+                <dd>{{card.name}}</dd>
                 <dt>Birth Date</dt>
-                <dd>2010-09-07</dd>
+                <dd>{{card.birthDate}}</dd>
                 <dt>Type</dt>
-                <dd>credit</dd>
+                <dd>{{card.type.name}}</dd>
               </dl>
             </td>
             <td valign="top">
@@ -89,16 +89,30 @@ import {Customer} from "../model/Customer";
 })
 export class CustomerComponent implements OnInit {
 
+  id: string;
+  isLoading: boolean = true;
+  client: Customer;
+
   constructor(private http: HttpClient,
+              private router: Router,
               private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    const id: string = this.route.snapshot.paramMap.get('id');
-    console.info("***id", id);
-    this.http.get(`http://localhost:8090/api/customers/${id}`).subscribe((value: Customer) => {
-      console.log("value", value, value.id, value.firstName);
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.http.get(`http://localhost:8090/api/customers/${this.id}`).subscribe((value: Customer) => {
+      console.info(value);
+      this.isLoading = false;
+      this.client = value;
     });
+  }
+
+  editCustomer() {
+    this.router.navigate([`/edit-customer/${this.id}`]);
+  }
+
+  addNewCard() {
+    // TODO
   }
 
 }

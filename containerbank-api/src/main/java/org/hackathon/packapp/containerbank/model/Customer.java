@@ -82,7 +82,13 @@ public class Customer extends Person {
     public List<Card> getCards() {
         List<Card> sortedCards = new ArrayList<>(getCardsInternal());
         PropertyComparator.sort(sortedCards, new MutableSortDefinition("name", true, true));
-        return Collections.unmodifiableList(sortedCards);
+        List<Card> cards = Collections.unmodifiableList(sortedCards);
+        cards.forEach(card -> {
+            card.setCustomer(null);
+            card.setPaymentsInternal(null);
+        });
+        //  return Collections.unmodifiableList(sortedCards);
+        return cards;
     }
 
     public void addCard(Card card) {

@@ -6,7 +6,10 @@ import org.hackathon.packapp.containerbank.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -17,7 +20,6 @@ import java.util.List;
 @RestController
 public class CustomerController {
 
-    private static final String VIEWS_customer_CREATE_OR_UPDATE_FORM = "customers/createOrUpdateCustomerForm";
     private final BankService bankService;
 
 
@@ -26,12 +28,6 @@ public class CustomerController {
         this.bankService = bankService;
     }
 
-/*
-    @InitBinder
-    public void setAllowedFields(WebDataBinder dataBinder) {
-        dataBinder.setDisallowedFields("id");
-    }
-*/
 
     @PostMapping(value = "/customers/new")
     public ResponseEntity processCreationForm(@Valid Customer customer) {
@@ -39,17 +35,16 @@ public class CustomerController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @GetMapping(value = "/customers")
-    public List<Customer> processFindForm(@RequestParam String customer) {
-
-        // allow parameterless GET request for /customers to return all records
-     /*   if (customer.getLastName() == null) {
-            customer.setLastName(""); // empty string signifies broadest possible search
-        }
-*/
+    @GetMapping(value = "/customers/{name}")
+    public List<Customer> processFindForm(@PathVariable String name) {
         // find customers by last name
-        List<Customer> results = this.bankService.findCustomerByLastName(customer);
+        List<Customer> results = this.bankService.findCustomerByLastName(name);
         return results;
+    }
+
+    @GetMapping(value = "/customers")
+    public Iterable<Customer> findAllCustomers() {
+        return this.bankService.findAllCustomers();
     }
 
     @GetMapping(value = "/customers/{customerId}/edit")

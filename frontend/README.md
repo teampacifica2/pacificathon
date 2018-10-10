@@ -25,3 +25,17 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+* lancer l'image
+
+supression du container précédent:
+````
+sudo rm hackathon-js
+````
+
+
+Création et lancement du nouveau container:
+````
+sudo docker run -p80:80 --name=hackathon-js  teampacifica2/hackaton-js:0.0.1-SNAPSHOT
+````

@@ -15,7 +15,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'customers', component: CustomersComponent},
-  {path: 'customer', component: CustomerComponent},
+  {path: 'customer/:id', component: CustomerComponent},
   {path: 'find-customer', component: FindCustomerComponent},
   {path: 'edit-customer', component: EditCustomerComponent},
   {path: '**', component: ErrorComponent}

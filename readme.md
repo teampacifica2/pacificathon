@@ -1,4 +1,4 @@
-# Bienvenue au Hackathon PackApp : PACIFICATHON!
+# Bienvenue sur l'application de l'equipe "TEAM PACIFICA"
 
 
 ## Livrables
@@ -20,29 +20,31 @@
 	- [ ] `Logging` : centraliser les logs de l'application
 
 
-## Accès au code source
+## Accès
 
+**Accèder au code source
 ```
 https://github.com/pacificathon/hackathonpackapp/containerbank.git
-
 ```
 **Accéder à l'application** 
 `http://ec2-user@11.eu-west-1.compute.amazonaws.com:9966/containerbank/`
-
 
 # L'application
 
 ## Architecture
 
-L'application containerbank 
+L'application containerbank est séparée entre la une partie front (repertoire frontEnd) et une partie back (repertoire containerbank-api)
+```mermaid
+graph LR
+A(frontEnd) --> B(containerbank-api)
+```
 
-
-
+## Docker
 
 
 
 # L'équipe 
 - Jean-Patrick GUILLY 
-- Patri URBANSKI
-- Ferréol MARTZOLFF
+- Patrick URBANSKI
+- Thomas MARTZOLFF
 - Nicolas LEMAIRE

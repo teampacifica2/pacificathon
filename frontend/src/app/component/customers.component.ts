@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Customer} from '../model/Customer';
 
 @Component({
   selector: `customers`,
@@ -45,13 +46,13 @@ import {Observable} from 'rxjs';
 })
 export class CustomersComponent implements OnInit {
 
-  customers: any;
+  customers: Customer[];
 
   constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8090/api/customers').subscribe((data: any) => this.customers = data);
+    this.http.get('http://localhost:8090/api/customers').subscribe((data: Customer[]) => this.customers = data);
   }
 
 }

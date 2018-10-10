@@ -41,8 +41,10 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customers")
-    public Iterable<Customer> findAllCustomers() {
-        return this.bankService.findAllCustomers();
+    public ResponseEntity<Iterable<Customer>> findAllCustomers() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
+        return new ResponseEntity(this.bankService.findAllCustomers(), headers, HttpStatus.OK);
     }
 
     @GetMapping(value = "/customers/{customerId}")

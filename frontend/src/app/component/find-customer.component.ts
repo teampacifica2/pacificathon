@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: `find-customer`,
@@ -7,7 +8,7 @@ import {Component} from '@angular/core';
       <div class="container xd-container">
 
         <h2>Find Customers</h2>
-        <form id="search-customer-form" class="form-horizontal" action="/containerbank/customers.html" method="get">
+        <form id="search-customer-form" class="form-horizontal">
           <div class="form-group">
             <div class="control-group" id="lastName">
               <label class="col-sm-2 control-label">Last name </label>
@@ -23,7 +24,7 @@ import {Component} from '@angular/core';
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default">Find Customer</button>
+              <button (click)="goToCustomers()" class="btn btn-default">Find Customer</button>
             </div>
           </div>
         </form>
@@ -34,5 +35,11 @@ import {Component} from '@angular/core';
     </div>`
 })
 export class FindCustomerComponent {
+
+  constructor(private router: Router) {}
+
+  goToCustomers() {
+    this.router.navigateByUrl(`/customers`);
+  }
 
 }

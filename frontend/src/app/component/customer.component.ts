@@ -100,7 +100,7 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.http.get(`http://localhost:8090/api/customers/${this.id}`).subscribe((value: Customer) => {
+    this.http.get(`/api/customers/${this.id}`).subscribe((value: Customer) => {
       console.info(value);
       this.isLoading = false;
       this.client = value;

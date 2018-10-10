@@ -52,7 +52,7 @@ export class CustomersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8090/api/customers').subscribe((data: Customer[]) => this.customers = data);
+    this.http.get('/api/customers').subscribe((data: Customer[]) => this.customers = data);
   }
 
 }

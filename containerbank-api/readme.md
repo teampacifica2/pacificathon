@@ -11,6 +11,6 @@ ajouter la variable de JVM : -Dlog_path=/home/hackathon/logs
 mvn clean install
 
 * lancer l'image
-
-sudo docker run -p8090:8090 -e"log_path=/home/hackathon/logs"  --name=hackathon  bd3d
+sudo rm hackathon
+sudo docker run -p8090:8090 -e"log_path=/home/hackathon/logs"  --name=hackathon  teampacifica2/hackaton:0.0.1-SNAPSHOT
 

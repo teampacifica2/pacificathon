@@ -91,6 +91,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component_error_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./component/error.component */ "./src/app/component/error.component.ts");
 /* harmony import */ var _component_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./component/home.component */ "./src/app/component/home.component.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _component_new_customer_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./component/new-customer.component */ "./src/app/component/new-customer.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -109,12 +111,15 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var appRoutes = [
     { path: 'home', component: _component_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"] },
     { path: 'customers', component: _component_customers_component__WEBPACK_IMPORTED_MODULE_3__["CustomersComponent"] },
     { path: 'customer/:id', component: _component_customer_component__WEBPACK_IMPORTED_MODULE_5__["CustomerComponent"] },
     { path: 'find-customer', component: _component_find_customer_component__WEBPACK_IMPORTED_MODULE_4__["FindCustomerComponent"] },
-    { path: 'edit-customer', component: _component_edit_customer_component__WEBPACK_IMPORTED_MODULE_6__["EditCustomerComponent"] },
+    { path: 'edit-customer/:id', component: _component_edit_customer_component__WEBPACK_IMPORTED_MODULE_6__["EditCustomerComponent"] },
+    { path: 'new-customer', component: _component_new_customer_component__WEBPACK_IMPORTED_MODULE_13__["NewCustomerComponent"] },
     { path: '**', component: _component_error_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"] },
     { path: 'error', component: _component_error_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"] }
 ];
@@ -131,12 +136,14 @@ var AppModule = /** @class */ (function () {
                 _component_edit_customer_component__WEBPACK_IMPORTED_MODULE_6__["EditCustomerComponent"],
                 _component_navbar_component__WEBPACK_IMPORTED_MODULE_8__["NavbarComponent"],
                 _component_error_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"],
-                _component_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"]
+                _component_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
+                _component_new_customer_component__WEBPACK_IMPORTED_MODULE_13__["NewCustomerComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"].forRoot(appRoutes),
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_12__["FormsModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
@@ -184,7 +191,7 @@ var CustomerComponent = /** @class */ (function () {
     CustomerComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.id = this.route.snapshot.paramMap.get('id');
-        this.http.get("http://localhost:8090/api/customers/" + this.id).subscribe(function (value) {
+        this.http.get("/api/customers/" + this.id).subscribe(function (value) {
             console.info(value);
             _this.isLoading = false;
             _this.client = value;
@@ -241,7 +248,7 @@ var CustomersComponent = /** @class */ (function () {
     }
     CustomersComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get('http://localhost:8090/api/customers').subscribe(function (data) { return _this.customers = data; });
+        this.http.get('/api/customers').subscribe(function (data) { return _this.customers = data; });
     };
     CustomersComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -268,140 +275,47 @@ var CustomersComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditCustomerComponent", function() { return EditCustomerComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
 
 var EditCustomerComponent = /** @class */ (function () {
-    function EditCustomerComponent() {
+    function EditCustomerComponent(http, router, route) {
+        this.http = http;
+        this.router = router;
+        this.route = route;
+        this.isLoading = true;
     }
+    EditCustomerComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.id = this.route.snapshot.paramMap.get('id');
+        this.http.get("http://localhost:8090/api/customers/" + this.id).subscribe(function (value) {
+            console.info(value);
+            _this.isLoading = false;
+            _this.client = value;
+        });
+    };
+    EditCustomerComponent.prototype.updateCustomer = function () {
+        console.info(this.client);
+    };
     EditCustomerComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "edit-customer",
-            template: '<div class="container-fluid">\n' +
-                '    <div class="container xd-container">\n' +
-                '\n' +
-                '        <h2>\n' +
-                '         Customer\n' +
-                '    </h2>\n' +
-                '    <form id="add-customer-form" class="form-horizontal" action="/containerbank/component/1/edit.html" method="post"><div class="form-group has-feedback">\n' +
-                '            \n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '    \n' +
-                '    \n' +
-                '    <div class="form-group ">\n' +
-                '        <label class="col-sm-2 control-label">First Name</label>\n' +
-                '\n' +
-                '        <div class="col-sm-10">\n' +
-                '            <input id="firstName" name="firstName" class="form-control" value="Jean-Pierre" type="text">\n' +
-                '            \n' +
-                '                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>\n' +
-                '            \n' +
-                '            \n' +
-                '        </div>\n' +
-                '    </div>\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '    \n' +
-                '    \n' +
-                '    <div class="form-group ">\n' +
-                '        <label class="col-sm-2 control-label">Last Name</label>\n' +
-                '\n' +
-                '        <div class="col-sm-10">\n' +
-                '            <input id="lastName" name="lastName" class="form-control" value="Deshaies" type="text">\n' +
-                '            \n' +
-                '                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>\n' +
-                '            \n' +
-                '            \n' +
-                '        </div>\n' +
-                '    </div>\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '    \n' +
-                '    \n' +
-                '    <div class="form-group ">\n' +
-                '        <label class="col-sm-2 control-label">Address</label>\n' +
-                '\n' +
-                '        <div class="col-sm-10">\n' +
-                '            <input id="address" name="address" class="form-control" value="5 Boulevard Diderot" type="text">\n' +
-                '            \n' +
-                '                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>\n' +
-                '            \n' +
-                '            \n' +
-                '        </div>\n' +
-                '    </div>\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '    \n' +
-                '    \n' +
-                '    <div class="form-group ">\n' +
-                '        <label class="col-sm-2 control-label">City</label>\n' +
-                '\n' +
-                '        <div class="col-sm-10">\n' +
-                '            <input id="city" name="city" class="form-control" value="Paris" type="text">\n' +
-                '            \n' +
-                '                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>\n' +
-                '            \n' +
-                '            \n' +
-                '        </div>\n' +
-                '    </div>\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                '    \n' +
-                '    \n' +
-                '    <div class="form-group ">\n' +
-                '        <label class="col-sm-2 control-label">Telephone</label>\n' +
-                '\n' +
-                '        <div class="col-sm-10">\n' +
-                '            <input id="telephone" name="telephone" class="form-control" value="0639283726" type="text">\n' +
-                '            \n' +
-                '                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>\n' +
-                '            \n' +
-                '            \n' +
-                '        </div>\n' +
-                '    </div>\n' +
-                '\n' +
-                '</div>\n' +
-                '        <div class="form-group">\n' +
-                '            <div class="col-sm-offset-2 col-sm-10">\n' +
-                '                <button class="btn btn-default" type="submit">Update Customer</button>\n' +
-                '                    </div>\n' +
-                '        </div>\n' +
-                '    </form></div>\n' +
-                '</div>'
-        })
+            template: "\n    <div class=\"container-fluid\" *ngIf=\"!isLoading\">\n      <div class=\"container xd-container\">\n\n        <h2>\n          Customer\n        </h2>\n        <form id=\"add-customer-form\" class=\"form-horizontal\">\n          <div class=\"form-group has-feedback\">\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">First Name</label>\n    \n              <div class=\"col-sm-10\">\n                <input id=\"firstName\" name=\"firstName\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.firstName\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Last Name</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"lastName\" name=\"lastName\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.lastName\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Address</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"address\" name=\"address\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.address\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">City</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"city\" name=\"city\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.city\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Telephone</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"telephone\" name=\"telephone\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.telephone\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n          </div>\n          <div class=\"form-group\">\n            <div class=\"col-sm-offset-2 col-sm-10\">\n              <button class=\"btn btn-default\" (click)=\"updateCustomer()\">Update Customer</button>\n            </div>\n          </div>\n        </form>\n      </div>\n    </div>"
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
     ], EditCustomerComponent);
     return EditCustomerComponent;
 }());
@@ -550,6 +464,40 @@ var NavbarComponent = /** @class */ (function () {
         })
     ], NavbarComponent);
     return NavbarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/component/new-customer.component.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/component/new-customer.component.ts ***!
+  \*****************************************************/
+/*! exports provided: NewCustomerComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewCustomerComponent", function() { return NewCustomerComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var NewCustomerComponent = /** @class */ (function () {
+    function NewCustomerComponent() {
+    }
+    NewCustomerComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "new-customer",
+            template: "\n    <div class=\"container-fluid\">\n      <div class=\"container xd-container\">\n\n        <h2>\n          New Customer\n        </h2>\n        <form id=\"add-customer-form\" class=\"form-horizontal\" action=\"/containerbank/customers/new\" method=\"post\">\n          <div class=\"form-group has-feedback\">\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">First Name</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"firstName\" name=\"firstName\" class=\"form-control\" value=\"\" type=\"text\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Last Name</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"lastName\" name=\"lastName\" class=\"form-control\" value=\"\" type=\"text\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Address</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"address\" name=\"address\" class=\"form-control\" value=\"\" type=\"text\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">City</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"city\" name=\"city\" class=\"form-control\" value=\"\" type=\"text\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Telephone</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"telephone\" name=\"telephone\" class=\"form-control\" value=\"\" type=\"text\">\n\n\n              </div>\n            </div>\n\n          </div>\n          <div class=\"form-group\">\n            <div class=\"col-sm-offset-2 col-sm-10\">\n              <button class=\"btn btn-default\" type=\"submit\">Add Customer</button>\n            </div>\n          </div>\n        </form>\n      </div>\n    </div>"
+        })
+    ], NewCustomerComponent);
+    return NewCustomerComponent;
 }());
 
 

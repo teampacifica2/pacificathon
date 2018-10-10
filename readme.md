@@ -22,7 +22,7 @@
 
 ## Accès
 
-**Accèder au code source
+**Accéder au code source**
 ```
 https://github.com/pacificathon/hackathonpackapp/containerbank.git
 ```
@@ -38,6 +38,11 @@ L'application containerbank est séparée entre la une partie front (repertoire 
 graph LR
 A(frontEnd) --> B(containerbank-api)
 ```
+Partie front :
+
+
+Partie back :
+
 
 ## Docker
 

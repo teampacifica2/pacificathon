@@ -1,0 +1,19 @@
+@startuml
+skinparam defaultTextAlignment center
+skinparam RectangleBorderColor #000000
+skinparam RectangleBackgroundColor #white
+skinparam RectangleFontColor #000000
+skinparam ArrowFontColor #000000
+skinparam ArrowColor #000000
+skinparam QueueBackgroundColor #000000
+skinparam QueueFontColor #white
+skinparam QueueBorderColor #000000
+skinparam DatabaseBackgroundColor #white
+skinparam DatabaseFontColor #000000
+skinparam DatabaseBorderColor #000000
+skinparam DatabaseFontStyle bold
+skinparam FileFontColor #white
+skinparam FileBorderColor #000000
+skinparam FileBackgroundColor #gray
+skinparam FileFontStyle bold
+@enduml

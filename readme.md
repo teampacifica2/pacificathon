@@ -1,6 +1,10 @@
 # Bienvenue sur l'application de l'equipe "TEAM PACIFICA"
 
 
+## Architecture
+
+![alt text](doc/archi.png)
+
 ## Livrables
 
 - [ ] Le **code source** de l'application conteneurisée

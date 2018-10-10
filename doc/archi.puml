@@ -1,0 +1,23 @@
+@startuml
+!include skinparam.puml!0
+
+
+rectangle "**Hacker**\n\n<img png/hacker.jpeg>" as hacker
+
+rectangle "PODE                                                                                                                                                                       "{
+node "**FRONTEND**\n<img png/apache-http.jpeg><img png/angular.png>" as frontend{
+}
+
+node "**BACKEND**\n<img png/spring-boot.png>" as backend{
+}
+
+database "\nHSQLDB\n" as hsqldb #white
+
+
+
+}
+
+hacker ---> frontend: HTTP
+frontend --> backend: HTTP/JSON
+backend -> hsqldb: JDBC <font color=#256159 size=16>
+@enduml

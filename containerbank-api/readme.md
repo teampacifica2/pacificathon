@@ -20,7 +20,7 @@ sudo mvn clean install
 
 supression du container précédent:
 ````
-sudo rm hackathon
+sudo docker rm hackathon
 ````
 
 

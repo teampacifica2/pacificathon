@@ -21,56 +21,21 @@ import {Observable} from 'rxjs';
           </tr>
           </thead>
           <tbody>
-          <tr>
+          <tr *ngFor="let customer of customers">
             <td>
-              <a href="/containerbank/component/1.html">Jean-Pierre Deshaies</a>
+              <a href="/customerdetail?{{customer?.id}}">{{customer.lastName}}</a>
             </td>
             <td>
-              5 Boulevard Diderot
+              {{customer?.address}}
             </td>
             <td>
-              Paris
+              {{customer?.city}}
             </td>
             <td>
-              0639283726
+              {{customer?.telephone}}
             </td>
-            <td>
-              Professionnelle /
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/containerbank/component/2.html">Alphonse Dubois</a>
-            </td>
-            <td>
-              115 bis rue Ordener
-            </td>
-            <td>
-              Paris
-            </td>
-            <td>
-              0173243520
-            </td>
-            <td>
-              Personnelle /
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/containerbank/component/3.html">Léon Vigouroux</a>
-            </td>
-            <td>
-              18 rue des Batignolles
-            </td>
-            <td>
-              Marseille
-            </td>
-            <td>
-              0927115243
-            </td>
-            <td>
-              Bouygues Telecom /
-              Cadeau FNAC /
+            <td >
+              <div *ngFor="let card of customer.cards">{{card?.name}} /</div>
             </td>
           </tr>
           </tbody>
@@ -80,14 +45,13 @@ import {Observable} from 'rxjs';
 })
 export class CustomersComponent implements OnInit {
 
-  private result: Observable<any>;
+  customers: any;
 
   constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
-    console.log('*** test');
-    this.result = this.http.get('http://localhost:8090/api/customers/_search?name=Vigouroux');
+    this.http.get('http://localhost:8090/api/customers').subscribe((data: any) => this.customers = data);
   }
 
 }

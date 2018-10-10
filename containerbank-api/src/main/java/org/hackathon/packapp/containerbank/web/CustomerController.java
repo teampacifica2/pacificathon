@@ -16,6 +16,7 @@ import java.util.List;
  * @author Wavestone
  */
 @RestController
+@CrossOrigin(origins = "*")
 public class CustomerController {
 
     private final BankService bankService;
@@ -30,7 +31,9 @@ public class CustomerController {
     @PostMapping(value = "/customers/new")
     public ResponseEntity processCreationForm(@Valid Customer customer) {
         this.bankService.saveCustomer(customer);
-        return new ResponseEntity(HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
+        return new ResponseEntity(headers, HttpStatus.OK);
     }
 
     @GetMapping(value = "/customers/_search")

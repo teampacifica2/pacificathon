@@ -29,7 +29,7 @@ import {Router} from '@angular/router';
           </div>
         </form>
         <br>
-        <a class="btn btn-default" href="/containerbank/customers/new">Add Customer</a>
+        <a class="btn btn-default" (click)="addCustomer()">Add Customer</a>
       </div>
 
     </div>`
@@ -41,6 +41,10 @@ export class FindCustomerComponent {
 
   goToCustomers() {
     this.router.navigate(["/customers"]);
+  }
+
+  addCustomer() {
+    this.router.navigate(["/new-customer"]);
   }
 
 }

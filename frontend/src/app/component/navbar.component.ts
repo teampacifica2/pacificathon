@@ -13,7 +13,7 @@ import {Component} from '@angular/core';
 
 
             <li class="active">
-              <a routerLink="/" title="home page">
+              <a routerLink="/home" title="home page">
 
                 <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                 <span>Home</span>

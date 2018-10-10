@@ -70,10 +70,10 @@ import {Customer} from "../model/Customer";
                 </tr>
                 <tr>
                   <td>
-                    <a href="/containerbank/component/1/cards/1/edit">Edit Card</a>
+                    <a (click)="editCard()">Edit Card</a>
                   </td>
                   <td>
-                    <a href="/containerbank/component/1/cards/1/payments/new">Add Payment</a>
+                    <a (click)="addPayment()">Add Payment</a>
                   </td>
                 </tr>
                 </tbody>
@@ -100,7 +100,7 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.http.get(`/api/customers/${this.id}`).subscribe((value: Customer) => {
+    this.http.get(`http://localhost:8090/api/customers/${this.id}`).subscribe((value: Customer) => {
       console.info(value);
       this.isLoading = false;
       this.client = value;
@@ -112,6 +112,14 @@ export class CustomerComponent implements OnInit {
   }
 
   addNewCard() {
+    // TODO
+  }
+
+  editCard() {
+    // TODO
+  }
+
+  addPayment() {
     // TODO
   }
 

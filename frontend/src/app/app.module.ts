@@ -13,6 +13,7 @@ import {HomeComponent} from './component/home.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from "@angular/forms";
 import {NewCustomerComponent} from "./component/new-customer.component";
+import {AdvisorsComponent} from "./component/advisors.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
   {path: 'find-customer', component: FindCustomerComponent},
   {path: 'edit-customer/:id', component: EditCustomerComponent},
   {path: 'new-customer', component: NewCustomerComponent},
+  {path: 'advisors', component: AdvisorsComponent},
   {path: '**', component: ErrorComponent},
   {path: 'error', component: ErrorComponent}
 ];
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     ErrorComponent,
     HomeComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    AdvisorsComponent
   ],
   imports: [
     BrowserModule,

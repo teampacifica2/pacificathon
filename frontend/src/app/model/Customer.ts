@@ -10,7 +10,7 @@ export class Customer {
   telephone: string;
   cards: Array<Card>;
 
-  constructor(id: number, firstName: string, lastName: string, address: string, city: string, telephone: string, cards: Array<Card>) {
+  constructor(id?: number, firstName?: string, lastName?: string, address?: string, city?: string, telephone?: string, cards?: Array<Card>) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;

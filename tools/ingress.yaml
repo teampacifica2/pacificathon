@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pacificathon-api
+  namespace: packapp11
+spec:
+  rules:
+  - host: packapp11.hackathon-container.com
+    http:
+      paths:
+      - backend:
+          serviceName: pacificathon-api-svc
+          servicePort: 80
+  tls:
+  - hosts:
+    - packapp11.hackathon-container.com

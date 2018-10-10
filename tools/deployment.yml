@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pacificathon-api-deployment
+  namespace: packapp11
+spec:
+  selector:
+    matchLabels:
+      app: pacificathon-api
+  replicas: 2
+  template:
+    metadata:
+      labels:
+  app: pacificathon-api
+    spec:
+      containers:
+      - name: pacificathon-api
+        image: registry.hackathon-container.com/packapp11/teampacifica2/hackaton:0.0.1-SNAPSHOT
+        ports:
+    - containerPort: 8090
+      - name: pacificathon-front
+        image: registry.hackathon-container.com/packapp11/teampacifica2/hackaton-js:0.0.1-SNAPSHOT
+        ports:
+    - containerPort: 80
+        imagePullSecrets:
+        - name: registry

@@ -16,6 +16,9 @@ spec:
       containers:
       - name: pacificathon-api
         image: registry.hackathon-container.com/packapp11/teampacifica2/hackaton:0.1
+        env:
+        - name: log_path
+          value: /home/hackathon/logs
         ports:
     - containerPort: 8090
       - name: pacificathon-front

@@ -50,18 +50,18 @@ export class AdvisorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get("http://localhost:8090/api/advisors").subscribe((values: Array<Advisor>) => {
+    this.http.get('/api/advisors').subscribe((values: Array<Advisor>) => {
       this.isLoading = false;
       this.advisors = values;
     })
   }
 
   viewAsXml() {
-    window.open('http://localhost:8090/api/advisors');
+    window.open('/api/advisors');
   }
 
   viewAsJson() {
-    window.open('http://localhost:8090/api/advisors');
+    window.open('/api/advisors');
   }
 
 }

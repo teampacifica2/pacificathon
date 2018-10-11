@@ -5,7 +5,7 @@ https://packapp11.hackathon-container.com/
 
 ## Architecture
 
-L'appli est architectuée de la manière suivante :
+L'appli est architecturée de la manière suivante :
 
 ![alt text](doc/archi.png)
 
@@ -48,10 +48,10 @@ Les descripteurs de déploiement Kubernetes sont dans le dossier tools.
 
 **Accéder au code source**
 ```
-https://github.com/pacificathon/hackathonpackapp/containerbank.git
+https://github.com/teampacifica2/pacificathon
 ```
 **Accéder à l'application** 
-`http://ec2-user@11.eu-west-1.compute.amazonaws.com:9966/containerbank/`
+`https://packapp11.hackathon-container.com`
 
 ## L'équipe 
 - Jean-Patrick GUILLY 

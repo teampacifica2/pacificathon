@@ -16,7 +16,7 @@ import {Router} from '@angular/router';
                   <div class="form-group">
                     <div class="control-group" id="lastName">
                       <label class="col-sm-2 control-label">Last name </label>
-                        <input id="lastName" name="lastName" class="form-control" value="" size="30" maxlength="80"
+                        <input id="lastName" name="lastName" class="form-control" [(ngModel)]="searchName" size="30" maxlength="80"
                                type="text"><span class="help-inline"></span>
                     </div>
                   </div>

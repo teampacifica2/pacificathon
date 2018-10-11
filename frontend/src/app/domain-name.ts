@@ -1,1 +1,1 @@
-export const domainName = ""; // environment.production ? "" : "http://localhost:8090";
+export const domainName = ""; // http://localhost:8090";

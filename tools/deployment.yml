@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: pacificathon-api
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -15,11 +15,11 @@ spec:
     spec:
       containers:
       - name: pacificathon-api
-        image: registry.hackathon-container.com/packapp11/teampacifica2/hackaton:0.0.1-SNAPSHOT
+        image: registry.hackathon-container.com/packapp11/teampacifica2/hackaton:0.1
         ports:
     - containerPort: 8090
       - name: pacificathon-front
-        image: registry.hackathon-container.com/packapp11/teampacifica2/hackaton-js:0.0.1-SNAPSHOT
+        image: registry.hackathon-container.com/packapp11/teampacifica2/hackaton-js:0.1
         ports:
     - containerPort: 80
         imagePullSecrets:

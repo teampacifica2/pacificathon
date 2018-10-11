@@ -1,6 +1,8 @@
 import {Component} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Customer} from "../model/Customer";
+import {Router} from "@angular/router";
+import {domainName} from "../domain-name";
 
 @Component({
   selector: `new-customer`,
@@ -83,14 +85,13 @@ export class NewCustomerComponent {
 
   client: Customer;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.client = new Customer();
 
   }
 
   addCustomer() {
-    console.info(this.client);
-    this.http.post("http://localhost:8090/api/customers/new", this.client).subscribe();
+    this.http.post(`${domainName}/api/customers/new`, this.client).subscribe(() => this.router.navigate(['/customers']));
   }
 
 

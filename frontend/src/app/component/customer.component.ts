@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Customer} from "../model/Customer";
+import {domainName} from "../domain-name";
 
 @Component({
   selector: `customer`,
@@ -100,7 +101,7 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.http.get(`/api/customers/${this.id}`).subscribe((value: Customer) => {
+    this.http.get(`${domainName}/api/customers/${this.id}`).subscribe((value: Customer) => {
       console.info(value);
       this.isLoading = false;
       this.client = value;

@@ -4,12 +4,10 @@ package org.hackathon.packapp.containerbank.web;
 import org.hackathon.packapp.containerbank.model.Customer;
 import org.hackathon.packapp.containerbank.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -31,9 +29,7 @@ public class CustomerController {
     @PostMapping(value = "/customers/new")
     public ResponseEntity processCreationForm(@RequestBody Customer customer) {
         this.bankService.saveCustomer(customer);
-        HttpHeaders headers = new HttpHeaders();
-        // headers.add("Access-Control-Allow-Origin", "*");
-        return new ResponseEntity(headers, HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping(value = "/customers/_search")
@@ -45,16 +41,12 @@ public class CustomerController {
 
     @GetMapping(value = "/customers")
     public ResponseEntity<Iterable<Customer>> findAllCustomers() {
-        HttpHeaders headers = new HttpHeaders();
-        // headers.add("Access-Control-Allow-Origin", "*");
-        return new ResponseEntity(this.bankService.findAllCustomers(), headers, HttpStatus.OK);
+        return new ResponseEntity(this.bankService.findAllCustomers(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/customers/{customerId}")
     public ResponseEntity<Customer> getCustomer(@PathVariable("customerId") int customerId) {
-        HttpHeaders headers = new HttpHeaders();
-        // headers.add("Access-Control-Allow-Origin", "*");
-        return new ResponseEntity(this.bankService.findCustomerById(customerId), headers, HttpStatus.OK);
+        return new ResponseEntity(this.bankService.findCustomerById(customerId), HttpStatus.OK);
     }
 
     @GetMapping(value = "/customers/{customerId}/edit")
@@ -63,7 +55,7 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/customers/{customerId}/edit")
-    public ResponseEntity processUpdateCustomerForm(@Valid Customer customer, @PathVariable("customerId") int customerId) {
+    public ResponseEntity processUpdateCustomerForm(@RequestBody Customer customer, @PathVariable("customerId") int customerId) {
         customer.setId(customerId);
         this.bankService.saveCustomer(customer);
         return new ResponseEntity(HttpStatus.OK);

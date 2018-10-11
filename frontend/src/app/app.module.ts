@@ -18,6 +18,7 @@ import {AdvisorsComponent} from "./component/advisors.component";
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'customers', component: CustomersComponent},
+  {path: 'customers/:lastName', component: CustomersComponent},
   {path: 'customer/:id', component: CustomerComponent},
   {path: 'find-customer', component: FindCustomerComponent},
   {path: 'edit-customer/:id', component: EditCustomerComponent},
@@ -26,7 +27,6 @@ const appRoutes: Routes = [
   {path: '**', component: ErrorComponent},
   {path: 'error', component: ErrorComponent}
 ];
-
 
 @NgModule({
   declarations: [

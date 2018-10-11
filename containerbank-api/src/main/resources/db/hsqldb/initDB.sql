@@ -24,8 +24,6 @@ CREATE TABLE advisor_specialties (
   advisor_id       INTEGER NOT NULL,
   specialty_id INTEGER NOT NULL
 );
-ALTER TABLE advisor_specialties ADD CONSTRAINT fk_advisor_specialties_advisors FOREIGN KEY (advisor_id) REFERENCES advisors (id);
-ALTER TABLE advisor_specialties ADD CONSTRAINT fk_advisor_specialties_specialties FOREIGN KEY (specialty_id) REFERENCES specialties (id);
 
 CREATE TABLE types (
   id   INTEGER IDENTITY PRIMARY KEY,
@@ -47,18 +45,16 @@ CREATE TABLE cards (
   id         INTEGER IDENTITY PRIMARY KEY,
   name       VARCHAR(30),
   birth_date DATE,
-  type_id    INTEGER NOT NULL,
-  customer_id   INTEGER NOT NULL
+  type_id    INTEGER,
+  customer_id   INTEGER
 );
-ALTER TABLE cards ADD CONSTRAINT fk_cards_customers FOREIGN KEY (customer_id) REFERENCES customers (id);
-ALTER TABLE cards ADD CONSTRAINT fk_cards_types FOREIGN KEY (type_id) REFERENCES types (id);
+
 CREATE INDEX cards_name ON cards (name);
 
 CREATE TABLE payments (
   id          INTEGER IDENTITY PRIMARY KEY,
-  card_id      INTEGER NOT NULL,
+  card_id      INTEGER,
   payment_date  DATE,
   description VARCHAR(255)
 );
-ALTER TABLE payments ADD CONSTRAINT fk_payments_cards FOREIGN KEY (card_id) REFERENCES cards (id);
 CREATE INDEX payments_card_id ON payments (card_id);

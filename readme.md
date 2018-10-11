@@ -1,6 +1,8 @@
 # Bienvenue sur l'application de l'equipe "TEAM PACIFICA"
 
 
+https://packapp11.hackathon-container.com/
+
 ## Architecture
 
 L'appli est architectuée de la manière suivante :
@@ -9,7 +11,7 @@ L'appli est architectuée de la manière suivante :
 
 ## Packaging
 
-* Construction des images avec Maven
+* Construction des images avec Maven et webpack
     * automatisation des constructions des images docker
     * versioning 
 * api: backend spring boot 
@@ -17,6 +19,7 @@ L'appli est architectuée de la manière suivante :
     * démarrage rapide de l'application
 * fontend: 
     * Angular développement et déploiement rapide
+    * Boostrap pour le look and feel
 
 
 

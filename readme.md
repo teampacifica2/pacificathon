@@ -7,6 +7,20 @@ L'appli est architectuée de la manière suivante :
 
 ![alt text](doc/archi.png)
 
+## Packaging
+
+* Construction des images avec Maven
+    * automatisation des constructions des images docker
+    * versioning 
+* api: backend spring boot 
+    * gestion simplifiée des paramètres de déploiement (clé/valeur)
+    * démarrage rapide de l'application
+* fontend: 
+    * Angular développement et déploiement rapide
+
+
+
+
 ## Livrables
 
 - [x] Le **code source** de l'application conteneurisée

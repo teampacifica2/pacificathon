@@ -3,51 +3,46 @@ import {Component} from '@angular/core';
 @Component({
   selector: `navbar`,
   template: `
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase navbar-shrink" id="mainNav" role="navigation">
       <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/containerbank/"><span></span></a>
-        </div>
-        <div class="navbar-collapse" id="main-navbar">
-          <ul class="nav navbar-nav navbar-right">
+        <a class="navbar-brand js-scroll-trigger" href="/containerbank/"><span>Container Bank</span></a>
+        <div class="navbar-collapse collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
 
 
-            <li class="active">
-              <a routerLink="/home" title="home page">
+            <li class="nav-item mx-0 mx-lg-1">
+              <a routerLink="/home" title="home page" routerLinkActive="active"
+                 class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">
 
-                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                <span>Home</span>
+                Home
 
               </a>
             </li>
 
 
-            <li class="">
-              <a routerLink="/find-customer" title="find customer">
+            <li class="nav-item mx-0 mx-lg-1">
+              <a routerLink="/find-customer" title="find customer" routerLinkActive="active"
+                 class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">
 
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                <span>Find customer</span>
-
-              </a>
-            </li>
-
-
-            <li class="">
-              <a routerLink="/advisors" title="advisors">
-
-                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                <span>Advisors</span>
+                Find customer
 
               </a>
             </li>
 
 
-            <li class="">
-              <a routerLink="/error" title="trigger a RuntimeException to see how it is handled">
+            <li class="nav-item mx-0 mx-lg-1">
+              <a routerLink="/advisors" title="advisors"  routerLinkActive="active"
+                 class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">
+                Advisors
 
-                <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-                <span>Error</span>
+              </a>
+            </li>
 
+
+            <li class="nav-item mx-0 mx-lg-1">
+              <a routerLink="/error" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" routerLinkActive="active"
+                 title="trigger a RuntimeException to see how it is handled">
+                Error
               </a>
             </li>
 

@@ -6,10 +6,22 @@ import {Customer} from '../model/Customer';
 @Component({
   selector: `customers`,
   template: `
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <h2 class="text-uppercase text-secondary mb-0">Customers</h2>
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+              <div class="portfolio-item-caption-content my-auto w-100 text-white">
+                <i class="fas fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <div class="container-fluid">
       <div class="container xd-container">
-
-        <h2>Customers</h2>
 
         <table id="customersTable" class="table table-striped">
           <thead>

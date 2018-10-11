@@ -20,10 +20,12 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              "src/congrats.png",
               "src/assets"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/startbootstrap-freelancer/css/freelancer.min.css",
               "src/styles.css"
             ],
             "scripts": []

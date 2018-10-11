@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   {path: 'edit-customer/:id', component: EditCustomerComponent},
   {path: 'new-customer', component: NewCustomerComponent},
   {path: 'advisors', component: AdvisorsComponent},
-  {path: '**', component: ErrorComponent},
+  {path: '**', component: HomeComponent},
   {path: 'error', component: ErrorComponent}
 ];
 

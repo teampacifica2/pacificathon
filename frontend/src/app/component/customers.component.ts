@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
 import {Customer} from '../model/Customer';
+import {domainName} from "../domain-name";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: `customers`,
@@ -47,7 +48,7 @@ import {Customer} from '../model/Customer';
             <td>
               {{customer?.telephone}}
             </td>
-            <td >
+            <td>
               <div *ngFor="let card of customer.cards">{{card?.name}} /</div>
             </td>
           </tr>
@@ -60,11 +61,18 @@ export class CustomersComponent implements OnInit {
 
   customers: Customer[];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.http.get('/api/customers').subscribe((data: Customer[]) => this.customers = data);
+    const searchName: string = this.route.snapshot.paramMap.get('lastName');
+    console.info(searchName);
+    if (searchName !== undefined && searchName !== "" && searchName !== null) {
+      this.http.get(`${domainName}/api/customers/_search?name=${searchName}`).subscribe((data: Customer[]) => this.customers = data);
+    } else {
+      this.http.get(`${domainName}/api/customers`).subscribe((data: Customer[]) => this.customers = data);
+    }
+
   }
 
 }

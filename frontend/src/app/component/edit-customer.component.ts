@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Customer} from "../model/Customer";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
+import {domainName} from "../domain-name";
 
 @Component({
   selector: `edit-customer`,
@@ -28,7 +29,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 
             <div class="form-group ">
               <label class="col-sm-2 control-label">First Name</label>
-    
+
               <div class="col-sm-10">
                 <input id="firstName" name="firstName" class="form-control" type="text" [(ngModel)]="client.firstName">
 
@@ -112,8 +113,7 @@ export class EditCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.http.get(`http://localhost:8090/api/customers/${this.id}`).subscribe((value: Customer) => {
-      console.info(value);
+    this.http.get(`${domainName}/api/customers/${this.id}`).subscribe((value: Customer) => {
       this.isLoading = false;
       this.client = value;
     });
@@ -121,6 +121,7 @@ export class EditCustomerComponent implements OnInit {
 
   updateCustomer() {
     console.info(this.client);
+    this.http.post(`${domainName}/api/customers/${this.client.id}/edit`, this.client).subscribe(() => this.router.navigate(['/customers']));
   }
 
 }

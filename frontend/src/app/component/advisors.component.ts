@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Advisor} from "../model/Advisor";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {domainName} from "../domain-name";
 
 @Component({
   selector: "advisors",
@@ -61,7 +62,7 @@ export class AdvisorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('/api/advisors').subscribe((values: Array<Advisor>) => {
+    this.http.get(`${domainName}/api/advisors`).subscribe((values: Array<Advisor>) => {
       this.isLoading = false;
       this.advisors = values;
     })

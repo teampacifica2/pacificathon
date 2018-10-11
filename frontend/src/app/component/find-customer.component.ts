@@ -36,11 +36,13 @@ import {Router} from '@angular/router';
 })
 export class FindCustomerComponent {
 
+  searchName: string = "";
+
   constructor(private router: Router) {
   }
 
   goToCustomers() {
-    this.router.navigate(["/customers"]);
+    this.router.navigate([this.searchName !== "" ? "/customers/" + this.searchName : "/customers"]);
   }
 
   addCustomer() {

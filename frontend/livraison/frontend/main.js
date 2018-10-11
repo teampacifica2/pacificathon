@@ -93,12 +93,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _component_new_customer_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./component/new-customer.component */ "./src/app/component/new-customer.component.ts");
+/* harmony import */ var _component_advisors_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./component/advisors.component */ "./src/app/component/advisors.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -120,7 +122,8 @@ var appRoutes = [
     { path: 'find-customer', component: _component_find_customer_component__WEBPACK_IMPORTED_MODULE_4__["FindCustomerComponent"] },
     { path: 'edit-customer/:id', component: _component_edit_customer_component__WEBPACK_IMPORTED_MODULE_6__["EditCustomerComponent"] },
     { path: 'new-customer', component: _component_new_customer_component__WEBPACK_IMPORTED_MODULE_13__["NewCustomerComponent"] },
-    { path: '**', component: _component_error_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"] },
+    { path: 'advisors', component: _component_advisors_component__WEBPACK_IMPORTED_MODULE_14__["AdvisorsComponent"] },
+    { path: '**', component: _component_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"] },
     { path: 'error', component: _component_error_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"] }
 ];
 var AppModule = /** @class */ (function () {
@@ -137,7 +140,8 @@ var AppModule = /** @class */ (function () {
                 _component_navbar_component__WEBPACK_IMPORTED_MODULE_8__["NavbarComponent"],
                 _component_error_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"],
                 _component_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
-                _component_new_customer_component__WEBPACK_IMPORTED_MODULE_13__["NewCustomerComponent"]
+                _component_new_customer_component__WEBPACK_IMPORTED_MODULE_13__["NewCustomerComponent"],
+                _component_advisors_component__WEBPACK_IMPORTED_MODULE_14__["AdvisorsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -150,6 +154,64 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/component/advisors.component.ts":
+/*!*************************************************!*\
+  !*** ./src/app/component/advisors.component.ts ***!
+  \*************************************************/
+/*! exports provided: AdvisorsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdvisorsComponent", function() { return AdvisorsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AdvisorsComponent = /** @class */ (function () {
+    function AdvisorsComponent(http, router) {
+        this.http = http;
+        this.router = router;
+        this.isLoading = true;
+    }
+    AdvisorsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.http.get('/api/advisors').subscribe(function (values) {
+            _this.isLoading = false;
+            _this.advisors = values;
+        });
+    };
+    AdvisorsComponent.prototype.viewAsXml = function () {
+        window.open('/api/advisors');
+    };
+    AdvisorsComponent.prototype.viewAsJson = function () {
+        window.open('/api/advisors');
+    };
+    AdvisorsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "advisors",
+            template: "\n    <section class=\"portfolio\" id=\"portfolio\">\n      <div class=\"container\">\n        <h2 class=\"text-uppercase text-secondary mb-0\">Advisors</h2>\n        <div class=\"row\">\n          <div class=\"col-md-6 col-lg-4\">\n            <div class=\"portfolio-item-caption d-flex position-absolute h-100 w-100\">\n              <div class=\"portfolio-item-caption-content my-auto w-100 text-white\">\n                <i class=\"fas fa-search-plus fa-3x\"></i>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n    <div class=\"container xd-container\" *ngIf=\"!isLoading\">\n      <table id=\"advisorsTable\" class=\"table table-striped\">\n        <thead>\n        <tr>\n          <th>Name</th>\n          <th>Specialties</th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr *ngFor=\"let advisor of advisors\">\n          <td>{{advisor.firstName}} {{advisor.lastName}}</td>\n          <td *ngIf=\"advisor.specialties.length === 0\">none</td>\n          <td *ngIf=\"advisor.specialties.length !== 0\">{{advisor.specialties[0].name}}</td>\n        </tr>\n        </tbody>\n      </table>\n\n      <table class=\"table-buttons\">\n        <tbody>\n        <tr>\n          <td>\n            <a (click)=\"viewAsXml()\">View as XML</a>\n          </td>\n          <td>\n            <a (click)=\"viewAsJson()\">View as JSON</a>\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  "
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], AdvisorsComponent);
+    return AdvisorsComponent;
 }());
 
 
@@ -203,10 +265,16 @@ var CustomerComponent = /** @class */ (function () {
     CustomerComponent.prototype.addNewCard = function () {
         // TODO
     };
+    CustomerComponent.prototype.editCard = function () {
+        // TODO
+    };
+    CustomerComponent.prototype.addPayment = function () {
+        // TODO
+    };
     CustomerComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "customer",
-            template: "\n    <div class=\"container-fluid\" *ngIf=\"!isLoading\">\n      <div class=\"container xd-container\">\n\n        <h2>Customer Information</h2>\n\n\n        <table class=\"table table-striped\">\n          <tbody>\n          <tr>\n            <th>Name</th>\n            <td><b>{{client.firstName}} {{client.lastName}}</b></td>\n          </tr>\n          <tr>\n            <th>Address</th>\n            <td>{{client.address}}</td>\n          </tr>\n          <tr>\n            <th>City</th>\n            <td>{{client.city}}</td>\n          </tr>\n          <tr>\n            <th>Telephone</th>\n            <td>{{client.telephone}}</td>\n          </tr>\n          </tbody>\n        </table>\n\n        <a (click)=\"editCustomer()\" class=\"btn btn-default\">Edit Customer</a>\n\n        <a (click)=\"addNewCard()\" class=\"btn btn-default\">Add New Card</a>\n\n        <br>\n        <br>\n        <br>\n        <h2>Cards and Payments</h2>\n\n        <table class=\"table table-striped\">\n          <tbody>\n          <tr *ngFor=\"let card of client.cards\">\n            <td valign=\"top\">\n              <dl class=\"dl-horizontal\">\n                <dt>Name</dt>\n                <dd>{{card.name}}</dd>\n                <dt>Birth Date</dt>\n                <dd>{{card.birthDate}}</dd>\n                <dt>Type</dt>\n                <dd>{{card.type.name}}</dd>\n              </dl>\n            </td>\n            <td valign=\"top\">\n              <table class=\"table-condensed\">\n                <thead>\n                <tr>\n                  <th>Payment Date</th>\n                  <th>Description</th>\n                </tr>\n                </thead>\n                <tbody>\n                <tr>\n                  <td>2015-09-04</td>\n                  <td>Monoprix</td>\n                </tr>\n                <tr>\n                  <td>\n                    <a href=\"/containerbank/component/1/cards/1/edit\">Edit Card</a>\n                  </td>\n                  <td>\n                    <a href=\"/containerbank/component/1/cards/1/payments/new\">Add Payment</a>\n                  </td>\n                </tr>\n                </tbody>\n              </table>\n            </td>\n          </tr>\n\n          </tbody>\n        </table>\n\n      </div>\n    </div>"
+            template: "\n    <section class=\"portfolio\" id=\"portfolio\">\n      <div class=\"container\">\n        <h2 class=\"text-uppercase text-secondary mb-0\">Customer Information</h2>\n        <div class=\"row\">\n          <div class=\"col-md-6 col-lg-4\">\n            <div class=\"portfolio-item-caption d-flex position-absolute h-100 w-100\">\n              <div class=\"portfolio-item-caption-content my-auto w-100 text-white\">\n                <i class=\"fas fa-search-plus fa-3x\"></i>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n    <div class=\"container-fluid\" *ngIf=\"!isLoading\">\n      <div class=\"container xd-container\">\n        <table class=\"table table-striped\">\n          <tbody>\n          <tr>\n            <th>Name</th>\n            <td><b>{{client.firstName}} {{client.lastName}}</b></td>\n          </tr>\n          <tr>\n            <th>Address</th>\n            <td>{{client.address}}</td>\n          </tr>\n          <tr>\n            <th>City</th>\n            <td>{{client.city}}</td>\n          </tr>\n          <tr>\n            <th>Telephone</th>\n            <td>{{client.telephone}}</td>\n          </tr>\n          </tbody>\n        </table>\n\n        <a (click)=\"editCustomer()\" class=\"btn btn-default\">Edit Customer</a>\n\n        <a (click)=\"addNewCard()\" class=\"btn btn-default\">Add New Card</a>\n\n        <br>\n        <br>\n        <br>\n        <h2>Cards and Payments</h2>\n\n        <table class=\"table table-striped\">\n          <tbody>\n          <tr *ngFor=\"let card of client.cards\">\n            <td valign=\"top\">\n              <dl class=\"dl-horizontal\">\n                <dt>Name</dt>\n                <dd>{{card.name}}</dd>\n                <dt>Birth Date</dt>\n                <dd>{{card.birthDate}}</dd>\n                <dt>Type</dt>\n                <dd>{{card.type.name}}</dd>\n              </dl>\n            </td>\n            <td valign=\"top\">\n              <table class=\"table-condensed\">\n                <thead>\n                <tr>\n                  <th>Payment Date</th>\n                  <th>Description</th>\n                </tr>\n                </thead>\n                <tbody>\n                <tr>\n                  <td>2015-09-04</td>\n                  <td>Monoprix</td>\n                </tr>\n                <tr>\n                  <td>\n                    <a (click)=\"editCard()\">Edit Card</a>\n                  </td>\n                  <td>\n                    <a (click)=\"addPayment()\">Add Payment</a>\n                  </td>\n                </tr>\n                </tbody>\n              </table>\n            </td>\n          </tr>\n\n          </tbody>\n        </table>\n\n      </div>\n    </div>"
         }),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
@@ -253,7 +321,7 @@ var CustomersComponent = /** @class */ (function () {
     CustomersComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "customers",
-            template: "\n    <div class=\"container-fluid\">\n      <div class=\"container xd-container\">\n\n        <h2>Customers</h2>\n\n        <table id=\"customersTable\" class=\"table table-striped\">\n          <thead>\n          <tr>\n            <th style=\"width: 150px;\">Name</th>\n            <th style=\"width: 200px;\">Address</th>\n            <th>City</th>\n            <th style=\"width: 120px\">Telephone</th>\n            <th>Cards</th>\n          </tr>\n          </thead>\n          <tbody>\n          <tr *ngFor=\"let customer of customers\">\n            <td>\n              <a routerLink=\"/customer/{{customer?.id}}\">{{customer.lastName}}</a>\n            </td>\n            <td>\n              {{customer?.address}}\n            </td>\n            <td>\n              {{customer?.city}}\n            </td>\n            <td>\n              {{customer?.telephone}}\n            </td>\n            <td >\n              <div *ngFor=\"let card of customer.cards\">{{card?.name}} /</div>\n            </td>\n          </tr>\n          </tbody>\n        </table>\n      </div>\n    </div>"
+            template: "\n    <section class=\"portfolio\" id=\"portfolio\">\n      <div class=\"container\">\n        <h2 class=\"text-uppercase text-secondary mb-0\">Customers</h2>\n        <div class=\"row\">\n          <div class=\"col-md-6 col-lg-4\">\n            <div class=\"portfolio-item-caption d-flex position-absolute h-100 w-100\">\n              <div class=\"portfolio-item-caption-content my-auto w-100 text-white\">\n                <i class=\"fas fa-search-plus fa-3x\"></i>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n    <div class=\"container-fluid\">\n      <div class=\"container xd-container\">\n\n        <table id=\"customersTable\" class=\"table table-striped\">\n          <thead>\n          <tr>\n            <th style=\"width: 150px;\">Name</th>\n            <th style=\"width: 200px;\">Address</th>\n            <th>City</th>\n            <th style=\"width: 120px\">Telephone</th>\n            <th>Cards</th>\n          </tr>\n          </thead>\n          <tbody>\n          <tr *ngFor=\"let customer of customers\">\n            <td>\n              <a routerLink=\"/customer/{{customer?.id}}\">{{customer.lastName}}</a>\n            </td>\n            <td>\n              {{customer?.address}}\n            </td>\n            <td>\n              {{customer?.city}}\n            </td>\n            <td>\n              {{customer?.telephone}}\n            </td>\n            <td >\n              <div *ngFor=\"let card of customer.cards\">{{card?.name}} /</div>\n            </td>\n          </tr>\n          </tbody>\n        </table>\n      </div>\n    </div>"
         }),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], CustomersComponent);
@@ -311,7 +379,7 @@ var EditCustomerComponent = /** @class */ (function () {
     EditCustomerComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "edit-customer",
-            template: "\n    <div class=\"container-fluid\" *ngIf=\"!isLoading\">\n      <div class=\"container xd-container\">\n\n        <h2>\n          Customer\n        </h2>\n        <form id=\"add-customer-form\" class=\"form-horizontal\">\n          <div class=\"form-group has-feedback\">\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">First Name</label>\n    \n              <div class=\"col-sm-10\">\n                <input id=\"firstName\" name=\"firstName\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.firstName\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Last Name</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"lastName\" name=\"lastName\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.lastName\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Address</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"address\" name=\"address\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.address\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">City</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"city\" name=\"city\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.city\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Telephone</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"telephone\" name=\"telephone\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.telephone\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n          </div>\n          <div class=\"form-group\">\n            <div class=\"col-sm-offset-2 col-sm-10\">\n              <button class=\"btn btn-default\" (click)=\"updateCustomer()\">Update Customer</button>\n            </div>\n          </div>\n        </form>\n      </div>\n    </div>"
+            template: "\n    <section class=\"portfolio\" id=\"portfolio\">\n      <div class=\"container\">\n        <h2 class=\"text-uppercase text-secondary mb-0\">Customer</h2>\n        <div class=\"row\">\n          <div class=\"col-md-6 col-lg-4\">\n            <div class=\"portfolio-item-caption d-flex position-absolute h-100 w-100\">\n              <div class=\"portfolio-item-caption-content my-auto w-100 text-white\">\n                <i class=\"fas fa-search-plus fa-3x\"></i>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n    <div class=\"container-fluid\" *ngIf=\"!isLoading\">\n      <div class=\"container xd-container\">\n        <form id=\"add-customer-form\" class=\"form-horizontal\">\n          <div class=\"form-group has-feedback\">\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">First Name</label>\n    \n              <div class=\"col-sm-10\">\n                <input id=\"firstName\" name=\"firstName\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.firstName\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Last Name</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"lastName\" name=\"lastName\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.lastName\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Address</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"address\" name=\"address\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.address\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">City</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"city\" name=\"city\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.city\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Telephone</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"telephone\" name=\"telephone\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.telephone\">\n\n                <span class=\"glyphicon glyphicon-ok form-control-feedback\" aria-hidden=\"true\"></span>\n\n\n              </div>\n            </div>\n\n          </div>\n          <div class=\"form-group\">\n            <div class=\"col-sm-offset-2 col-sm-10\">\n              <button class=\"btn btn-default\" (click)=\"updateCustomer()\">Update Customer</button>\n            </div>\n          </div>\n        </form>\n      </div>\n    </div>"
         }),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
@@ -348,7 +416,7 @@ var ErrorComponent = /** @class */ (function () {
     ErrorComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "error",
-            template: "<div class=\"container xd-container\"><h2>Something happened...</h2>\n  <p>Expected: controller used to showcase what happens when an exception is thrown</p>\n</div>"
+            template: "\n    <section class=\"portfolio\" id=\"portfolio\">\n      <div class=\"container\">\n        <h2 class=\"text-uppercase text-secondary mb-0\">Error !</h2>\n        <div class=\"row\">\n          <div class=\"col-md-6 col-lg-4\">\n            <div class=\"portfolio-item-caption d-flex position-absolute h-100 w-100\">\n              <div class=\"portfolio-item-caption-content my-auto w-100 text-white\">\n                <i class=\"fas fa-search-plus fa-3x\"></i>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n    <div class=\"container xd-container\"><h2>Something happened...</h2>\n  <p>Expected: controller used to showcase what happens when an exception is thrown</p>\n</div>"
         })
     ], ErrorComponent);
     return ErrorComponent;
@@ -388,10 +456,13 @@ var FindCustomerComponent = /** @class */ (function () {
     FindCustomerComponent.prototype.goToCustomers = function () {
         this.router.navigate(["/customers"]);
     };
+    FindCustomerComponent.prototype.addCustomer = function () {
+        this.router.navigate(["/new-customer"]);
+    };
     FindCustomerComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "find-customer",
-            template: "\n    <div class=\"container-fluid\">\n      <div class=\"container xd-container\">\n\n        <h2>Find Customers</h2>\n        <form id=\"search-customer-form\" class=\"form-horizontal\">\n          <div class=\"form-group\">\n            <div class=\"control-group\" id=\"lastName\">\n              <label class=\"col-sm-2 control-label\">Last name </label>\n              <div class=\"col-sm-10\">\n                <input id=\"lastName\" name=\"lastName\" class=\"form-control\" value=\"\" size=\"30\" maxlength=\"80\"\n                       type=\"text\"><span class=\"help-inline\"></span>\n\n              </div>\n\n            </div>\n\n          </div>\n\n          <div class=\"form-group\">\n            <div class=\"col-sm-offset-2 col-sm-10\">\n              <button (click)=\"goToCustomers()\" class=\"btn btn-default\">Find Customer</button>\n            </div>\n          </div>\n        </form>\n        <br>\n        <a class=\"btn btn-default\" href=\"/containerbank/customers/new\">Add Customer</a>\n      </div>\n\n    </div>"
+            template: "\n    <section class=\"portfolio\" id=\"portfolio\">\n      <div class=\"container\">\n        <h2 class=\"text-uppercase text-secondary mb-0\">Find Customers</h2>\n        <div class=\"row\">\n          <div class=\"col-md-6 col-lg-4\">\n            <div class=\"portfolio-item-caption d-flex position-absolute h-100 w-100\">\n              <div class=\"portfolio-item-caption-content my-auto w-100 text-white\">\n                <i class=\"fas fa-search-plus fa-3x\"></i>\n                <form id=\"search-customer-form\" class=\"form-horizontal\">\n                  <div class=\"form-group\">\n                    <div class=\"control-group\" id=\"lastName\">\n                      <label class=\"col-sm-2 control-label\">Last name </label>\n                        <input id=\"lastName\" name=\"lastName\" class=\"form-control\" value=\"\" size=\"30\" maxlength=\"80\"\n                               type=\"text\"><span class=\"help-inline\"></span>\n                    </div>\n                  </div>\n                  <div class=\"form-group\">\n                      <button (click)=\"goToCustomers()\" class=\"btn btn-primary btn-lg rounded-pill\">Find Customer</button>\n                  </div>\n                </form>\n                <br>\n                <a class=\"btn btn-primary btn-lg rounded-pill\" (click)=\"addCustomer()\">Add Customer</a>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n    "
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], FindCustomerComponent);
@@ -426,7 +497,7 @@ var HomeComponent = /** @class */ (function () {
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "home",
-            template: "<p>Home !</p>"
+            template: "\n    <section class=\"portfolio\" id=\"portfolio\">\n      <div class=\"container\">\n        <h2 class=\"text-center text-uppercase text-secondary mb-0\">Home !</h2>\n        <div class=\"row\">\n          <div class=\"col-md-6 col-lg-4\">\n            <div class=\"portfolio-item-caption d-flex position-absolute h-100 w-100\">\n              <div class=\"portfolio-item-caption-content my-auto w-100 text-center text-white\">\n                <i class=\"fas fa-search-plus fa-3x\"></i>\n              </div>\n            </div>\n            <img class=\"img-fluid\" src=\"assets/congrats.png\" alt=\"\">\n          </div>\n        </div>\n      </div>\n    </section>"
         })
     ], HomeComponent);
     return HomeComponent;
@@ -460,7 +531,7 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "navbar",
-            template: "\n    <nav class=\"navbar navbar-default\" role=\"navigation\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <a class=\"navbar-brand\" href=\"/containerbank/\"><span></span></a>\n        </div>\n        <div class=\"navbar-collapse\" id=\"main-navbar\">\n          <ul class=\"nav navbar-nav navbar-right\">\n\n\n            <li class=\"active\">\n              <a routerLink=\"/\" title=\"home page\">\n\n                <span class=\"glyphicon glyphicon-home\" aria-hidden=\"true\"></span>\n                <span>Home</span>\n\n              </a>\n            </li>\n\n\n            <li class=\"\">\n              <a routerLink=\"/find-customer\" title=\"find customer\">\n\n                <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span>\n                <span>Find customer</span>\n\n              </a>\n            </li>\n\n\n            <li class=\"\">\n              <a routerLink=\"/advisors\" title=\"advisors\">\n\n                <span class=\"glyphicon glyphicon-th-list\" aria-hidden=\"true\"></span>\n                <span>Advisors</span>\n\n              </a>\n            </li>\n\n\n            <li class=\"\">\n              <a routerLink=\"/error\" title=\"trigger a RuntimeException to see how it is handled\">\n\n                <span class=\"glyphicon glyphicon-warning-sign\" aria-hidden=\"true\"></span>\n                <span>Error</span>\n\n              </a>\n            </li>\n\n          </ul>\n        </div>\n      </div>\n    </nav>"
+            template: "\n    <nav class=\"navbar navbar-expand-lg bg-secondary fixed-top text-uppercase navbar-shrink\" id=\"mainNav\" role=\"navigation\">\n      <div class=\"container\">\n        <a class=\"navbar-brand js-scroll-trigger\" href=\"/containerbank/\"><span>Container Bank</span></a>\n        <div class=\"navbar-collapse collapse\" id=\"navbarResponsive\">\n          <ul class=\"navbar-nav ml-auto\">\n\n\n            <li class=\"nav-item mx-0 mx-lg-1\">\n              <a routerLink=\"/home\" title=\"home page\" routerLinkActive=\"active\"\n                 class=\"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger\">\n\n                Home\n\n              </a>\n            </li>\n\n\n            <li class=\"nav-item mx-0 mx-lg-1\">\n              <a routerLink=\"/find-customer\" title=\"find customer\" routerLinkActive=\"active\"\n                 class=\"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger\">\n\n                Find customer\n\n              </a>\n            </li>\n\n\n            <li class=\"nav-item mx-0 mx-lg-1\">\n              <a routerLink=\"/advisors\" title=\"advisors\"  routerLinkActive=\"active\"\n                 class=\"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger\">\n                Advisors\n\n              </a>\n            </li>\n\n\n            <li class=\"nav-item mx-0 mx-lg-1\">\n              <a routerLink=\"/error\" class=\"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger\" routerLinkActive=\"active\"\n                 title=\"trigger a RuntimeException to see how it is handled\">\n                Error\n              </a>\n            </li>\n\n          </ul>\n        </div>\n      </div>\n    </nav>"
         })
     ], NavbarComponent);
     return NavbarComponent;
@@ -481,23 +552,64 @@ var NavbarComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewCustomerComponent", function() { return NewCustomerComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _model_Customer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model/Customer */ "./src/app/model/Customer.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
 
 var NewCustomerComponent = /** @class */ (function () {
-    function NewCustomerComponent() {
+    function NewCustomerComponent(http) {
+        this.http = http;
+        this.client = new _model_Customer__WEBPACK_IMPORTED_MODULE_2__["Customer"]();
     }
+    NewCustomerComponent.prototype.addCustomer = function () {
+        console.info(this.client);
+        this.http.post("http://localhost:8090/api/customers/new", this.client).subscribe();
+    };
     NewCustomerComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "new-customer",
-            template: "\n    <div class=\"container-fluid\">\n      <div class=\"container xd-container\">\n\n        <h2>\n          New Customer\n        </h2>\n        <form id=\"add-customer-form\" class=\"form-horizontal\" action=\"/containerbank/customers/new\" method=\"post\">\n          <div class=\"form-group has-feedback\">\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">First Name</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"firstName\" name=\"firstName\" class=\"form-control\" value=\"\" type=\"text\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Last Name</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"lastName\" name=\"lastName\" class=\"form-control\" value=\"\" type=\"text\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Address</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"address\" name=\"address\" class=\"form-control\" value=\"\" type=\"text\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">City</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"city\" name=\"city\" class=\"form-control\" value=\"\" type=\"text\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Telephone</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"telephone\" name=\"telephone\" class=\"form-control\" value=\"\" type=\"text\">\n\n\n              </div>\n            </div>\n\n          </div>\n          <div class=\"form-group\">\n            <div class=\"col-sm-offset-2 col-sm-10\">\n              <button class=\"btn btn-default\" type=\"submit\">Add Customer</button>\n            </div>\n          </div>\n        </form>\n      </div>\n    </div>"
-        })
+            template: "\n    <section class=\"portfolio\" id=\"portfolio\">\n      <div class=\"container\">\n        <h2 class=\"text-uppercase text-secondary mb-0\">New Customers</h2>\n        <div class=\"row\">\n          <div class=\"col-md-6 col-lg-4\">\n            <div class=\"portfolio-item-caption d-flex position-absolute h-100 w-100\">\n              <div class=\"portfolio-item-caption-content my-auto w-100 text-white\">\n                <i class=\"fas fa-search-plus fa-3x\"></i>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n    <div class=\"container-fluid\">\n      <div class=\"container xd-container\">\n        <form id=\"add-customer-form\" class=\"form-horizontal\">\n          <div class=\"form-group has-feedback\">\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">First Name</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"firstName\" name=\"firstName\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.firstName\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Last Name</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"lastName\" name=\"lastName\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.lastName\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Address</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"address\" name=\"address\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.address\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">City</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"city\" name=\"city\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.city\">\n\n\n              </div>\n            </div>\n\n\n            <div class=\"form-group \">\n              <label class=\"col-sm-2 control-label\">Telephone</label>\n\n              <div class=\"col-sm-10\">\n                <input id=\"telephone\" name=\"telephone\" class=\"form-control\" type=\"text\" [(ngModel)]=\"client.telephone\">\n\n\n              </div>\n            </div>\n\n          </div>\n          <div class=\"form-group\">\n            <div class=\"col-sm-offset-2 col-sm-10\">\n              <button class=\"btn btn-default\" type=\"submit\" (click)=\"addCustomer()\">Add Customer</button>\n            </div>\n          </div>\n        </form>\n      </div>\n    </div>"
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], NewCustomerComponent);
     return NewCustomerComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/model/Customer.ts":
+/*!***********************************!*\
+  !*** ./src/app/model/Customer.ts ***!
+  \***********************************/
+/*! exports provided: Customer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Customer", function() { return Customer; });
+var Customer = /** @class */ (function () {
+    function Customer(id, firstName, lastName, address, city, telephone, cards) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.telephone = telephone;
+        this.cards = cards;
+    }
+    return Customer;
 }());
 
 
